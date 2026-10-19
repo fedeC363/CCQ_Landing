@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { useLanguage } from '../i18n/useLanguage.js'
+import SectionMarker from './SectionMarker.jsx'
+import { MinusIcon, PlusIcon } from './Icons.jsx'
 
 export default function Faq() {
   const { t } = useLanguage()
@@ -8,13 +10,14 @@ export default function Faq() {
   const toggle = (index) => setOpenIndex((current) => (current === index ? null : index))
 
   return (
-    <section className="section" aria-labelledby="faq-title">
-      <div className="container">
-        <header className="section-header">
-          <h2 id="faq-title" className="section-title">
+    <section className="section section--divided" aria-labelledby="faq-title">
+      <div className="container faq">
+        <div className="faq__intro">
+          <SectionMarker number="10" />
+          <h2 id="faq-title" className="section-title faq__title">
             {t('faq.title')}
           </h2>
-        </header>
+        </div>
 
         <div className="faq__list">
           {t('faq.items').map((item, index) => {
@@ -33,7 +36,11 @@ export default function Faq() {
                     onClick={() => toggle(index)}
                   >
                     <span>{item.q}</span>
-                    <span className="faq__icon" aria-hidden="true" />
+                    {isOpen ? (
+                      <MinusIcon className="icon icon--lg faq__icon" />
+                    ) : (
+                      <PlusIcon className="icon icon--lg faq__icon" />
+                    )}
                   </button>
                 </h3>
                 <div id={panelId} role="region" aria-labelledby={buttonId} className="faq__answer" hidden={!isOpen}>

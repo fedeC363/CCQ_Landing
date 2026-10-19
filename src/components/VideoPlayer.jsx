@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useLanguage } from '../i18n/useLanguage.js'
 import { useReducedMotion } from '../lib/useReducedMotion.js'
+import { PlayIcon } from './Icons.jsx'
 
 // Video vertical 9:16 con poster.
 //
@@ -9,7 +10,8 @@ import { useReducedMotion } from '../lib/useReducedMotion.js'
 // - lazy: el src recien se asigna cuando el video se acerca a la pantalla
 //   (IntersectionObserver). Con preload="none" no se descarga nada hasta que
 //   se reproduce.
-export default function VideoPlayer({ video, autoPlay = false, lazy = true }) {
+// - variant: "hero" o "card" (portfolio), solo cambia el estilo del marco.
+export default function VideoPlayer({ video, autoPlay = false, lazy = true, variant = 'card' }) {
   const { lang, t } = useLanguage()
   const reducedMotion = useReducedMotion()
   const containerRef = useRef(null)
@@ -57,7 +59,7 @@ export default function VideoPlayer({ video, autoPlay = false, lazy = true }) {
   const showPlayButton = hasSource && !shouldAutoPlay && !started
 
   return (
-    <div className="video" ref={containerRef}>
+    <div className={`video video--${variant}`} ref={containerRef}>
       <video
         ref={videoRef}
         className="video__element"
@@ -81,10 +83,8 @@ export default function VideoPlayer({ video, autoPlay = false, lazy = true }) {
           onClick={handlePlay}
           aria-label={`${t('a11y.playVideo')}: ${description}`}
         >
-          <span className="video__play-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" focusable="false">
-              <path d="M8 5v14l11-7z" />
-            </svg>
+          <span className="video__play-icon">
+            <PlayIcon className="icon icon--lg" />
           </span>
         </button>
       )}

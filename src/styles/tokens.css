@@ -1,12 +1,12 @@
 /*
- * TOKENS DE DISEÑO - PROVISIONALES
+ * TOKENS DE DISEÑO
  * ---------------------------------------------------------------------------
- * Todos los colores, tipografias, tamaños, espaciados, radios y sombras de la
- * pagina salen de aca. Cuando llegue el diseño definitivo, se reemplazan estos
- * valores y la pagina entera cambia con ellos.
+ * Valores tomados del mockup aprobado (ccq-landing-mockup.html). Todos los
+ * colores, tipografias, tamaños, espaciados, radios y sombras de la pagina
+ * salen de aca: si el diseño cambia, se cambia este archivo.
  *
- * Los colores base son la paleta del brief de diseño. Las fuentes son las del
- * sistema hasta que se definan las familias (asi no se descarga nada extra).
+ * Fuentes: Archivo (variable, con ancho comprimido) y JetBrains Mono, cargadas
+ * desde Google Fonts en index.html.
  *
  * Breakpoints (las variables CSS no funcionan dentro de @media, por eso estan
  * escritos en los archivos de estilos; si cambian, buscar y reemplazar):
@@ -22,94 +22,166 @@
   --palette-magenta: #ff17d1;
   --palette-blue: #1207b8;
 
+  /* Grises del mockup */
+  --palette-gray-900: #1b1d1f;
+  --palette-gray-850: #1e2022;
+  --palette-gray-800: #222527;
+  --palette-gray-700: #33373b;
+  --palette-gray-600: #4a4f54;
+  --palette-gray-500: #6b7075;
+  --palette-gray-400: #a3a8ad;
+  --palette-gray-200: #d5d7d9;
+
   /* Colores por funcion */
   --color-bg: var(--palette-black);
-  --color-surface: #1e2022;
-  --color-surface-strong: #2a2c2f;
-  --color-section-alt: var(--palette-blue);
+  --color-bg-translucent: rgb(21 22 23 / 0.94);
+  --color-surface: var(--palette-gray-900);
+  --color-surface-raised: var(--palette-gray-850);
+  --color-media: var(--palette-gray-800);
   --color-text: var(--palette-white);
-  --color-text-muted: rgb(255 255 255 / 0.72);
-  --color-border: rgb(255 255 255 / 0.14);
-  --color-border-strong: rgb(255 255 255 / 0.32);
+  --color-text-muted: var(--palette-gray-400);
+  --color-text-subtle: var(--palette-gray-500);
+  --color-border: var(--palette-gray-700);
+  --color-border-strong: var(--palette-gray-600);
 
   --color-action: var(--palette-lime);
-  --color-action-hover: #ecff99;
+  --color-action-hover: var(--palette-white);
   --color-on-action: var(--palette-black);
   --color-accent: var(--palette-magenta);
-  --color-focus: var(--palette-magenta);
+  --color-accent-tint: rgb(255 23 209 / 0.14);
+  --color-focus: var(--palette-lime);
   --color-success: var(--palette-lime);
   --color-error: #ff6b8b;
-  --color-placeholder-media: #2a2c2f;
-  --color-overlay: rgb(21 22 23 / 0.55);
+
+  /* Superficie clara (plan destacado) */
+  --color-light-surface: var(--palette-white);
+  --color-light-text: var(--palette-black);
+  --color-light-text-muted: var(--palette-gray-600);
+  --color-light-border: var(--palette-gray-200);
+
+  /* Seccion lima (como trabajamos) */
+  --color-lime-surface: var(--palette-lime);
+  --color-lime-text: var(--palette-black);
+  --color-lime-text-muted: rgb(21 22 23 / 0.78);
+  --color-lime-text-subtle: rgb(21 22 23 / 0.6);
+  --color-lime-tick: rgb(21 22 23 / 0.3);
+
+  /* Video */
+  --color-video-stripe: rgb(255 255 255 / 0.025);
+  --color-play-bg: rgb(21 22 23 / 0.6);
+  --color-play-border: rgb(255 255 255 / 0.5);
 
   /* Tipografia */
-  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  --font-display: var(--font-sans);
+  --font-sans: 'Archivo', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --stretch-display: 72%;
+  --stretch-hero: 70%;
 
-  --fs-xs: 0.8125rem;
-  --fs-sm: 0.9375rem;
+  --fs-2xs: 0.6875rem; /* 11px */
+  --fs-xs: 0.75rem; /* 12px */
+  --fs-mono: 0.8125rem; /* 13px */
+  --fs-sm: 0.875rem; /* 14px */
+  --fs-button: 0.9375rem; /* 15px */
   --fs-base: 1rem;
-  --fs-md: 1.125rem;
-  --fs-lg: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
-  --fs-xl: clamp(1.5rem, 1.25rem + 1vw, 2rem);
-  --fs-2xl: clamp(1.875rem, 1.4rem + 2vw, 2.75rem);
-  --fs-3xl: clamp(2.25rem, 1.5rem + 3.2vw, 4rem);
+  --fs-button-lg: 1.0625rem; /* 17px */
+  --fs-faq: 1.25rem; /* 20px */
+  --fs-lead: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
+  --fs-h3: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);
+  --fs-logo: 1.75rem; /* 28px */
+  --fs-logo-footer: 1.5rem; /* 24px */
+  --fs-quote: clamp(1.875rem, 1.3rem + 1.8vw, 2.75rem);
+  --fs-plan-name: 2.25rem; /* 36px */
+  --fs-step-number: 3.5rem; /* 56px */
+  --fs-stat: clamp(2.5rem, 1.8rem + 2.4vw, 3.5rem);
+  --fs-section: clamp(2.5rem, 1.6rem + 3vw, 4.5rem);
+  --fs-price: clamp(3.5rem, 2.5rem + 3vw, 4.5rem);
+  --fs-contact: clamp(3rem, 1.6rem + 5vw, 6rem);
+  --fs-hero: clamp(3rem, 1.6rem + 5.6vw, 6.5rem);
 
   --fw-regular: 400;
-  --fw-medium: 500;
+  --fw-semibold: 600;
   --fw-bold: 700;
   --fw-black: 800;
 
-  --lh-tight: 1.05;
-  --lh-snug: 1.25;
+  --lh-display: 0.92;
+  --lh-tight: 0.95;
+  --lh-none: 1;
+  --lh-snug: 1.2;
+  --lh-lead: 1.5;
   --lh-base: 1.55;
 
-  --ls-tight: -0.02em;
+  --ls-display: -0.01em;
   --ls-wide: 0.08em;
 
   /* Espaciado */
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-3: 0.75rem;
-  --space-4: 1rem;
-  --space-5: 1.5rem;
-  --space-6: 2rem;
-  --space-7: 3rem;
-  --space-8: 4rem;
-  --space-9: 6rem;
+  --space-1: 0.25rem; /* 4 */
+  --space-2: 0.5rem; /* 8 */
+  --space-3: 0.75rem; /* 12 */
+  --space-4: 1rem; /* 16 */
+  --space-5: 1.25rem; /* 20 */
+  --space-6: 1.5rem; /* 24 */
+  --space-7: 1.75rem; /* 28 */
+  --space-8: 2rem; /* 32 */
+  --space-9: 2.5rem; /* 40 */
+  --space-10: 3rem; /* 48 */
+  --space-11: 3.5rem; /* 56 */
+  --space-12: 4rem; /* 64 */
+  --space-stagger: 4.5rem; /* 72: desfase de columnas del portfolio */
 
-  --section-pad-y: clamp(3.5rem, 2.5rem + 4vw, 6.5rem);
-  --gutter: 1rem;
-  --gutter-desktop: 2rem;
-  --container-max: 72rem;
-  --measure: 38rem;
+  --section-pad-y: clamp(4.5rem, 2.5rem + 5vw, 7rem);
+  --hero-pad-top: clamp(3rem, 1.5rem + 4vw, 5rem);
+  --gutter: clamp(1.25rem, 0.75rem + 2vw, 2rem);
+  --container-max: 76rem; /* 1216px */
 
   /* Bordes, radios y sombras */
   --border-width: 1px;
+  --border-width-mark: 1.5px;
   --border-width-strong: 2px;
-  --radius-sm: 0.25rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 1rem;
+  --border-width-heavy: 4px;
+  --radius-sm: 4px;
+  --radius-lg: 16px;
   --radius-pill: 999px;
-  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.3);
-  --shadow-md: 0 10px 30px rgb(0 0 0 / 0.35);
-  --focus-ring-width: 3px;
+  --shadow-video: 0 32px 64px -24px rgb(0 0 0 / 0.7);
+  --shadow-card: 0 24px 48px -16px rgb(0 0 0 / 0.6);
+  --focus-ring-width: 2px;
   --focus-ring-offset: 3px;
 
   /* Componentes */
-  --header-height: 4rem;
-  --mobile-bar-height: 4.5rem;
-  --button-height: 3rem;
-  --play-button-size: 4rem;
-  --hero-video-width: min(72vw, 20rem);
+  --button-height-sm: 2.75rem; /* 44 */
+  --button-height: 3.25rem; /* 52 */
+  --button-height-lg: 3.5rem; /* 56 */
+  --button-height-xl: 4rem; /* 64 */
+  --mobile-button-height: 3.375rem; /* 54 */
+  --input-height: 3rem; /* 48 */
+  --lang-button-height: 2.25rem; /* 36 */
+  --icon-sm: 1rem;
+  --icon-md: 1.125rem;
+  --icon-lg: 1.25rem;
+  --icon-xl: 1.5rem;
+  --icon-box: 3rem; /* 48 */
+  --square-xs: 0.5rem; /* 8: marcadores cuadrados */
+  --square-sm: 0.625rem; /* 10 */
+  --square-md: 0.75rem; /* 12 */
+  --corner-mark: 1.25rem; /* 20: esquinas del marco del hero */
+  --play-button-size: 3.75rem; /* 60 */
+  --hero-video-width: min(80vw, 20rem); /* 320 */
   --portfolio-card-width: min(68vw, 16rem);
   --video-ratio: 9 / 16;
+  --ruler-height: 1.125rem; /* 18 */
+  --ruler-flag-offset: 1.75rem; /* 28 */
+  --marker-height: 0.5rem; /* 8: regla de los marcadores de seccion */
+  --marker-tick-gap: 12px;
+  --stripe-size: 12px; /* rayado diagonal del fondo de los videos */
+  --lang-switch-pad: 3px;
+  --badge-pad-y: 2px;
+  --icon-nudge: 2px; /* alinea iconos con la primera linea de texto */
+  --mobile-bar-space: 5.5rem; /* 88: lugar que ocupa la barra de WhatsApp */
 
   /* Movimiento */
   --duration-fast: 150ms;
   --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
 
   /* Capas */
-  --z-header: 50;
-  --z-mobile-bar: 60;
+  --z-header: 10;
+  --z-mobile-bar: 20;
 }

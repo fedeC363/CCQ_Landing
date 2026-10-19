@@ -1,6 +1,7 @@
 import { LANGUAGES, useLanguage } from '../i18n/useLanguage.js'
 import { site } from '../content/site.config.js'
 import { externalLinkProps, useWhatsAppUrl } from '../lib/whatsapp.js'
+import { ChatIcon } from './Icons.jsx'
 
 export default function Header() {
   const { lang, setLang, t, slogan } = useLanguage()
@@ -32,7 +33,8 @@ export default function Header() {
             ))}
           </div>
 
-          <a className="btn btn--primary btn--small site-header__cta" href={whatsappUrl} {...externalLinkProps}>
+          <a className="btn btn--primary btn--sm site-header__cta" href={whatsappUrl} {...externalLinkProps}>
+            <ChatIcon />
             {t('header.cta')}
           </a>
         </div>

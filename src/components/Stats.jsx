@@ -10,7 +10,7 @@ export default function Stats() {
           {t('stats.items').map((item) => (
             <li key={item.label} className="stats__item">
               <span className="stats__value">{item.value}</span>
-              <span className="stats__label">{item.label}</span>
+              <span className="mono-label">{item.label}</span>
             </li>
           ))}
         </ul>

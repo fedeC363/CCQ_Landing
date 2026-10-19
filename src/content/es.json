@@ -6,11 +6,9 @@
     "ogDescription": "Video UGC con IA y edición profesional para marcas de ecommerce. Desde USD 6.",
     "ogLocale": "es_AR"
   },
-
   "whatsapp": {
     "message": "Hola {shortName}, quiero consultar por creativos para mi tienda."
   },
-
   "a11y": {
     "skipToContent": "Saltar al contenido",
     "languageSelector": "Idioma",
@@ -18,33 +16,57 @@
     "playVideo": "Reproducir video",
     "opensWhatsApp": "Se abre WhatsApp en una pestaña nueva"
   },
-
   "languages": {
-    "es": { "short": "ES", "label": "Español" },
-    "en": { "short": "EN", "label": "English" }
+    "es": {
+      "short": "ES",
+      "label": "Español"
+    },
+    "en": {
+      "short": "EN",
+      "label": "English"
+    }
   },
-
   "header": {
     "cta": "Escribinos"
   },
-
   "hero": {
     "eyebrow": "Para marcas de ecommerce",
     "title": "Creativos para tus anuncios en 24 horas, desde USD 6",
+    "titleHighlight": "24 horas",
     "subtitle": "Producimos videos UGC con inteligencia artificial y edición profesional. Vos mandás el guion y te devolvemos el anuncio listo para Meta Ads y TikTok Ads.",
     "ctaPrimary": "Pedir creativos",
-    "ctaSecondary": "Ver trabajos"
+    "ctaSecondary": "Ver trabajos",
+    "ruler": {
+      "marks": [
+        "00 h",
+        "12 h",
+        "24 h",
+        "36 h",
+        "48 h"
+      ],
+      "deadline": "24 h"
+    }
   },
-
   "stats": {
     "items": [
-      { "value": "+1000", "label": "creativos producidos" },
-      { "value": "24-48 h", "label": "tiempo de entrega" },
-      { "value": "USD 6", "label": "precio por video" },
-      { "value": "Incluidas", "label": "correcciones" }
+      {
+        "value": "+1000",
+        "label": "creativos producidos"
+      },
+      {
+        "value": "24-48 h",
+        "label": "tiempo de entrega"
+      },
+      {
+        "value": "USD 6",
+        "label": "precio por video"
+      },
+      {
+        "value": "Incluidas",
+        "label": "correcciones"
+      }
     ]
   },
-
   "problem": {
     "title": "El creativo se quema antes que el presupuesto",
     "subtitle": "Si vendés online, esto ya lo viviste.",
@@ -63,15 +85,14 @@
       }
     ]
   },
-
   "portfolio": {
     "title": "Esto es lo que entregamos",
     "subtitle": "Creativos reales producidos para marcas de ecommerce.",
     "more": "Ver más trabajos"
   },
-
   "offer": {
     "title": "Qué incluye cada creativo",
+    "quote": "La IA genera, un editor decide.",
     "items": [
       {
         "title": "Listo para Meta y TikTok Ads",
@@ -95,10 +116,10 @@
       }
     ]
   },
-
   "process": {
     "title": "Cómo trabajamos",
     "subtitle": "Cuatro pasos, 24 a 48 horas.",
+    "deadline": "24 h",
     "steps": [
       {
         "number": "01",
@@ -122,7 +143,6 @@
       }
     ]
   },
-
   "pricing": {
     "title": "Precios",
     "subtitle": "En dólares estadounidenses. Sin costos ocultos.",
@@ -163,12 +183,10 @@
     "duration": "Cada creativo incluye hasta 1 minuto de video. Entre 1 y 2 minutos se cobra como dos creativos.",
     "payment": "Transferencia bancaria o Mercado Pago, con el valor en dólares convertido a la cotización de USDT o euro."
   },
-
   "testimonials": {
     "title": "Lo que dicen nuestros clientes",
     "items": []
   },
-
   "faq": {
     "title": "Preguntas frecuentes",
     "items": [
@@ -198,7 +216,6 @@
       }
     ]
   },
-
   "contact": {
     "title": "Contanos qué necesitás",
     "subtitle": "Escribinos por WhatsApp y te respondemos con un presupuesto. Sin formularios eternos ni llamadas de venta.",
@@ -215,7 +232,6 @@
       "error": "No pudimos enviar tu mensaje. Escribinos por WhatsApp y lo resolvemos al instante."
     }
   },
-
   "footer": {
     "whatsapp": "WhatsApp: {phone}",
     "copyright": "© {year} {name}"
