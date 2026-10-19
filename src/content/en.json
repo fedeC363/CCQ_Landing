@@ -1,0 +1,223 @@
+{
+  "meta": {
+    "title": "{name} - AI video creatives for ecommerce",
+    "description": "AI video creatives for ecommerce. Ready for Meta and TikTok Ads in 24 hours, from USD 6. Over 1000 creatives produced.",
+    "ogTitle": "Ad creatives in 24 hours",
+    "ogDescription": "AI UGC video with professional editing for ecommerce brands. From USD 6.",
+    "ogLocale": "en_US"
+  },
+
+  "whatsapp": {
+    "message": "Hi {shortName}, I'd like to ask about creatives for my store."
+  },
+
+  "a11y": {
+    "skipToContent": "Skip to content",
+    "languageSelector": "Language",
+    "home": "{name}, home",
+    "playVideo": "Play video",
+    "opensWhatsApp": "Opens WhatsApp in a new tab"
+  },
+
+  "languages": {
+    "es": { "short": "ES", "label": "Español" },
+    "en": { "short": "EN", "label": "English" }
+  },
+
+  "header": {
+    "cta": "Get in touch"
+  },
+
+  "hero": {
+    "eyebrow": "For ecommerce brands",
+    "title": "Ad creatives in 24 hours, starting at USD 6",
+    "subtitle": "We produce AI-generated UGC video with professional editing. You send the script, we send back an ad ready for Meta Ads and TikTok Ads.",
+    "ctaPrimary": "Get your creatives",
+    "ctaSecondary": "See our work"
+  },
+
+  "stats": {
+    "items": [
+      { "value": "1000+", "label": "creatives produced" },
+      { "value": "24-48 h", "label": "turnaround time" },
+      { "value": "USD 6", "label": "per video" },
+      { "value": "Included", "label": "revisions" }
+    ]
+  },
+
+  "problem": {
+    "title": "Creatives burn out faster than your budget",
+    "subtitle": "If you sell online, you've been here before.",
+    "cards": [
+      {
+        "title": "Your winning ad lasts two weeks",
+        "text": "Audiences saturate, CTR drops and your cost per acquisition climbs. By the time you find something that works, it's already fading."
+      },
+      {
+        "title": "In-house video is slow and expensive",
+        "text": "Casting, location, shooting and editing. Weeks of work and hundreds of dollars for a single piece that might not perform."
+      },
+      {
+        "title": "No volume, no testing",
+        "text": "Finding one winner takes ten attempts. One creative a month isn't optimization, it's guesswork."
+      }
+    ]
+  },
+
+  "portfolio": {
+    "title": "This is what we deliver",
+    "subtitle": "Real creatives produced for ecommerce brands.",
+    "more": "See more work"
+  },
+
+  "offer": {
+    "title": "What every creative includes",
+    "items": [
+      {
+        "title": "Ready for Meta and TikTok Ads",
+        "text": "Vertical 9:16, optimized for feed and stories. Download it and upload it straight to your campaign."
+      },
+      {
+        "title": "UGC with realistic characters",
+        "text": "AI-generated people and settings. No casting, no image rights, no shoot schedules to coordinate."
+      },
+      {
+        "title": "Full professional editing",
+        "text": "Subtitles, effects, music, cuts and visual assets. AI generates, an editor decides."
+      },
+      {
+        "title": "Matched to your brand",
+        "text": "Colors, typography, logo and tone of voice. The video looks like yours because it is."
+      },
+      {
+        "title": "Revisions included",
+        "text": "We adjust the creative until it matches the script and what we agreed on."
+      }
+    ]
+  },
+
+  "process": {
+    "title": "How we work",
+    "subtitle": "Four steps, 24 to 48 hours.",
+    "steps": [
+      {
+        "number": "01",
+        "title": "You send the script",
+        "text": "Tell us the product and the message. You write the script for each creative, because nobody knows your offer better than you."
+      },
+      {
+        "number": "02",
+        "title": "We produce and edit",
+        "text": "We generate the video with AI and edit it end to end: subtitles, effects, music and visual assets."
+      },
+      {
+        "number": "03",
+        "title": "You review, we adjust",
+        "text": "We send it over, you watch it and tell us what to change. We revise until it matches what we agreed on."
+      },
+      {
+        "number": "04",
+        "title": "It's ready",
+        "text": "Delivered in 24 to 48 hours, almost always 24."
+      }
+    ]
+  },
+
+  "pricing": {
+    "title": "Pricing",
+    "subtitle": "In US dollars. No hidden fees.",
+    "currency": "USD",
+    "perCreative": "per creative",
+    "plans": {
+      "light": {
+        "name": "LIGHT plan",
+        "short": "LIGHT",
+        "description": "Produce and test volume without overspending.",
+        "features": [
+          "Standard generation",
+          "Full professional editing",
+          "Revisions included",
+          "24-48 h delivery"
+        ],
+        "cta": "Ask about it"
+      },
+      "omni": {
+        "name": "OMNI plan",
+        "short": "OMNI",
+        "description": "Top visual quality, higher realism and finer detail.",
+        "features": [
+          "High-quality generation",
+          "Full professional editing",
+          "Revisions included",
+          "24-48 h delivery"
+        ],
+        "cta": "Get your creatives"
+      }
+    },
+    "packs": {
+      "title": "Packs",
+      "subtitle": "For brands that need content consistently.",
+      "rowLabel": "{count} videos",
+      "more": "We also offer packs of 10 and 30. Just ask."
+    },
+    "duration": "Each creative includes up to 1 minute of video. Between 1 and 2 minutes counts as two creatives.",
+    "payment": "Bank transfer or Mercado Pago, with the dollar amount converted at the USDT or euro rate."
+  },
+
+  "testimonials": {
+    "title": "What our clients say",
+    "items": []
+  },
+
+  "faq": {
+    "title": "Frequently asked questions",
+    "items": [
+      {
+        "q": "How long does delivery take?",
+        "a": "Between 24 and 48 hours from the moment we receive your script. Most of the time, 24."
+      },
+      {
+        "q": "Do I have to write the script?",
+        "a": "Yes. You send us the script for each creative and we handle all the production and editing. That way the video says exactly what your brand needs to say."
+      },
+      {
+        "q": "What's the difference between LIGHT and OMNI?",
+        "a": "The generation engine. OMNI delivers higher realism and finer visual detail. Professional editing and revisions are identical in both plans."
+      },
+      {
+        "q": "How do I pay?",
+        "a": "Bank transfer or Mercado Pago. Pricing is in US dollars, converted at the USDT or euro rate."
+      },
+      {
+        "q": "What format do you deliver?",
+        "a": "Vertical 9:16 video, ready to upload to Meta Ads, TikTok Ads or social media."
+      },
+      {
+        "q": "What if I need a longer video?",
+        "a": "Each creative includes up to 1 minute. Between 1 and 2 minutes counts as two creatives."
+      }
+    ]
+  },
+
+  "contact": {
+    "title": "Tell us what you need",
+    "subtitle": "Message us on WhatsApp and we'll come back with a quote. No endless forms, no sales calls.",
+    "whatsappButton": "WhatsApp {phone}",
+    "form": {
+      "heading": "Or leave us your details",
+      "name": "Name",
+      "email": "Email",
+      "brand": "Brand or store",
+      "need": "What do you need?",
+      "needHint": "Number of creatives, product, deadline",
+      "submit": "Send",
+      "success": "Done. We'll reply within 24 hours.",
+      "error": "We couldn't send your message. Message us on WhatsApp and we'll sort it out right away."
+    }
+  },
+
+  "footer": {
+    "whatsapp": "WhatsApp: {phone}",
+    "copyright": "© {year} {name}"
+  }
+}

@@ -1,0 +1,16 @@
+node_modules
+dist
+.vercel
+.env
+.env.local
+.env.*.local
+
+# Videos originales sin comprimir (solo se versiona lo de public/)
+videos-src/
+
+*.log
+.DS_Store
+
+# Documentos internos de copy y prompts (no se publican)
+copy-landing-ccq.txt
+prompts-desarrollo.txt
