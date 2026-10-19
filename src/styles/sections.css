@@ -819,78 +819,38 @@
   outline-color: var(--color-accent);
 }
 
-/* Packs */
+/* Packs: bloque de consulta por WhatsApp */
 
-.packs {
+.packs-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
   margin-top: var(--space-5);
+  padding: var(--space-7) var(--space-8);
   border: var(--border-width) solid var(--color-border-strong);
+  color: var(--color-text);
+  text-decoration: none;
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
 }
 
-.packs__header {
-  padding: var(--space-7) var(--space-8) 0;
+.packs-cta:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
 }
 
-.packs__title {
+.packs-cta__text {
   font-weight: var(--fw-black);
   font-stretch: var(--stretch-display);
   font-size: var(--fs-quote);
   line-height: var(--lh-none);
 }
 
-.packs__subtitle {
-  margin-top: var(--space-3);
-  color: var(--color-text-muted);
-}
-
-.packs__table {
-  width: calc(100% - var(--space-8) * 2);
-  margin: var(--space-6) var(--space-8) 0;
-  border-collapse: collapse;
-  font-variant-numeric: tabular-nums;
-}
-
-.packs__table th,
-.packs__table td {
-  padding: var(--space-3) 0 var(--space-3) var(--space-4);
-  border-bottom: var(--border-width) solid var(--color-border);
-  text-align: right;
-  white-space: nowrap;
-}
-
-.packs__table th:first-child {
-  padding-left: 0;
-  text-align: left;
-}
-
-.packs__table thead th {
-  font-family: var(--font-mono);
-  font-size: var(--fs-xs);
-  font-weight: var(--fw-regular);
-  letter-spacing: var(--ls-wide);
-  color: var(--color-text-muted);
-}
-
-.packs__table tbody th {
-  font-weight: var(--fw-semibold);
-}
-
-.packs__table td {
-  font-weight: var(--fw-bold);
-}
-
-.packs__more {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-6);
-  padding: var(--space-6) var(--space-8);
-  font-weight: var(--fw-semibold);
-  text-decoration: none;
-  transition: color var(--duration-fast) var(--ease-out);
-}
-
-.packs__more:hover {
-  color: var(--color-accent);
+.packs-cta__icon {
+  width: var(--icon-cta);
+  height: var(--icon-cta);
 }
 
 .pricing__notes {
@@ -916,18 +876,12 @@
 
 @media (max-width: 47.99rem) {
   .plan,
-  .packs__header,
-  .packs__more {
+  .packs-cta {
     padding-inline: var(--space-6);
   }
 
   .plan {
     padding-block: var(--space-7);
-  }
-
-  .packs__table {
-    width: calc(100% - var(--space-6) * 2);
-    margin-inline: var(--space-6);
   }
 }
 

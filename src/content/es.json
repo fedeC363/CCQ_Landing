@@ -175,10 +175,7 @@
       }
     },
     "packs": {
-      "title": "Packs",
-      "subtitle": "Para marcas que necesitan contenido de forma constante.",
-      "rowLabel": "{count} videos",
-      "more": "También tenemos packs de 10 y 30. Consultanos."
+      "cta": "Consultar por precio de los packs"
     },
     "duration": "Cada creativo incluye hasta 1 minuto de video. Entre 1 y 2 minutos se cobra como dos creativos.",
     "payment": "Transferencia bancaria o Mercado Pago, con el valor en dólares convertido a la cotización de USDT o euro."

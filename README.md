@@ -21,7 +21,7 @@ Para el formulario, copiar `.env.example` como `.env` y completar `VITE_FORM_END
 | Todos los textos en español | `src/content/es.json` |
 | Todos los textos en inglés | `src/content/en.json` |
 | Videos del hero y del portfolio | `src/data/portfolio.js` |
-| Precios de planes y packs | `src/data/pricing.js` |
+| Precios de los planes (los packs no se publican: se consultan por WhatsApp) | `src/data/pricing.js` |
 | Colores, tipografías, tamaños, espaciados, radios, sombras | `src/styles/tokens.css` |
 | Estilos de cada sección (solo usan variables) | `src/styles/sections.css` |
 
@@ -36,7 +36,7 @@ Reglas del proyecto:
 
 - Al entrar, si el navegador está en español se carga ES; en cualquier otro caso, EN.
 - El selector ES | EN de la barra superior gana siempre y se guarda en `localStorage` (`ccq-lang`).
-- `src/i18n/useLanguage.js` expone `useLanguage()` → `{ lang, setLang, t, slogan }`. `t('hero.title')` devuelve el texto del idioma activo; `t('pricing.packs.rowLabel', { count: 5 })` reemplaza variables.
+- `src/i18n/useLanguage.js` expone `useLanguage()` → `{ lang, setLang, t, slogan }`. `t('hero.title')` devuelve el texto del idioma activo; `t('contact.whatsappButton')` reemplaza variables como `{phone}` con los datos de `site.config.js`.
 - Título de la pestaña, meta description y Open Graph se actualizan al cambiar de idioma. El HTML inicial sale en español (lo arma `vite.config.js` desde `es.json`).
 
 ## Videos
@@ -80,6 +80,5 @@ Orden aprobado, un componente por sección en `src/components/`:
 - Eslogan definitivo (hoy se usa la opción 1 recomendada).
 - Reseñas de clientes (mínimo tres) para publicar la sección 09.
 - Los 6 u 8 creativos destacados del portfolio y el video del hero.
-- Aprobación de la escala de precios de packs (`src/data/pricing.js`).
 - Si Mercado Pago cobra en pesos a cotización del día.
 - Logo, favicon, imagen para Open Graph y dominio.

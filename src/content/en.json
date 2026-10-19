@@ -175,10 +175,7 @@
       }
     },
     "packs": {
-      "title": "Packs",
-      "subtitle": "For brands that need content consistently.",
-      "rowLabel": "{count} videos",
-      "more": "We also offer packs of 10 and 30. Just ask."
+      "cta": "Ask about pack pricing"
     },
     "duration": "Each creative includes up to 1 minute of video. Between 1 and 2 minutes counts as two creatives.",
     "payment": "Bank transfer or Mercado Pago, with the dollar amount converted at the USDT or euro rate."

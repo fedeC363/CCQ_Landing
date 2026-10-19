@@ -159,6 +159,7 @@
   --icon-lg: 1.25rem;
   --icon-xl: 1.5rem;
   --icon-box: 3rem; /* 48 */
+  --icon-cta: 2rem; /* 32: flecha del bloque de packs */
   --square-xs: 0.5rem; /* 8: marcadores cuadrados */
   --square-sm: 0.625rem; /* 10 */
   --square-md: 0.75rem; /* 12 */

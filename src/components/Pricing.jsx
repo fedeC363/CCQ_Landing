@@ -1,5 +1,5 @@
 import { useLanguage } from '../i18n/useLanguage.js'
-import { packs, plans } from '../data/pricing.js'
+import { plans } from '../data/pricing.js'
 import { formatPrice } from '../lib/format.js'
 import { externalLinkProps, useWhatsAppUrl } from '../lib/whatsapp.js'
 import SectionMarker from './SectionMarker.jsx'
@@ -58,44 +58,11 @@ export default function Pricing() {
           })}
         </div>
 
-        <div className="packs">
-          <div className="packs__header">
-            <h3 className="packs__title">{t('pricing.packs.title')}</h3>
-            <p className="packs__subtitle">{t('pricing.packs.subtitle')}</p>
-          </div>
-
-          <table className="packs__table">
-            <thead>
-              <tr>
-                <th scope="col">
-                  <span className="visually-hidden">{t('pricing.packs.title')}</span>
-                </th>
-                {plans.map((plan) => (
-                  <th key={plan.id} scope="col">
-                    {t(`pricing.plans.${plan.id}.short`)}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {packs.map((pack) => (
-                <tr key={pack.count}>
-                  <th scope="row">{t('pricing.packs.rowLabel', { count: pack.count })}</th>
-                  {plans.map((plan) => (
-                    <td key={plan.id}>
-                      {currency} {formatPrice(pack[plan.id], lang)}
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-
-          <a className="packs__more" href={whatsappUrl} {...externalLinkProps}>
-            <span>{t('pricing.packs.more')}</span>
-            <ArrowIcon className="icon icon--lg" />
-          </a>
-        </div>
+        {/* Los precios de los packs no se publican: se consultan por WhatsApp. */}
+        <a className="packs-cta" href={whatsappUrl} {...externalLinkProps}>
+          <span className="packs-cta__text">{t('pricing.packs.cta')}</span>
+          <ArrowIcon className="icon packs-cta__icon" />
+        </a>
 
         <div className="pricing__notes">
           <p className="pricing__note">
