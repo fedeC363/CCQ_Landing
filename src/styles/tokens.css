@@ -187,7 +187,7 @@
   --reveal-opacity-start: 0.12;
   --reveal-blur-start: 14px;
   --reveal-shift-start: 40px;
-  --reveal-range: entry 0% cover 38%;
+  --reveal-range: entry 0% cover 20%;
   /* Para los ultimos bloques de la pagina (contacto y pie): la pagina no
      llega a scrollear hasta "cover 38%" y quedarian a medio enfocar. Con este
      rango terminan apenas entran enteros en pantalla, que siempre se alcanza. */
