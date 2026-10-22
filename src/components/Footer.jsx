@@ -8,7 +8,7 @@ export default function Footer() {
 
   return (
     <footer className="site-footer">
-      <div className="container site-footer__inner reveal reveal--end">
+      <div className="container site-footer__inner">
         <div className="site-footer__brand">
           <span className="site-footer__name">{site.name}</span>
           <span className="site-footer__slogan">{slogan}</span>

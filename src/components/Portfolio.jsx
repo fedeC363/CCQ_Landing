@@ -14,7 +14,7 @@ export default function Portfolio() {
 
   return (
     <section id="portfolio" className="section portfolio" aria-labelledby="portfolio-title">
-      <div className="container reveal">
+      <div className="container">
         <SectionMarker number="05" />
         <div className="portfolio__header">
           <div>
@@ -34,10 +34,8 @@ export default function Portfolio() {
 
       {/* En mobile es un carrusel horizontal: el contenedor es enfocable para
           poder desplazarlo con el teclado. En escritorio, grilla de cuatro
-          columnas con las pares desfasadas hacia abajo.
-          .reveal va en este contenedor y no en la lista: la lista vive dentro
-          del scroll horizontal y su linea de tiempo seria la del carrusel. */}
-      <div className="portfolio__scroller reveal" tabIndex={0} role="region" aria-labelledby="portfolio-title">
+          columnas con las pares desfasadas hacia abajo. */}
+      <div className="portfolio__scroller" tabIndex={0} role="region" aria-labelledby="portfolio-title">
         <ul className="portfolio__list">
           {visible.map((video) => (
             <li key={video.id} className="portfolio__item">

@@ -50,7 +50,7 @@ export default function Contact() {
   return (
     <section id="contacto" className="section section--divided" aria-labelledby="contact-title">
       <div className="container contact">
-        <div className="contact__intro reveal reveal--end">
+        <div className="contact__intro">
           <SectionMarker number="11" />
           <h2 id="contact-title" className="contact__title">
             {t('contact.title')}
@@ -62,7 +62,7 @@ export default function Contact() {
           </a>
         </div>
 
-        <form className="contact-form reveal reveal--end" onSubmit={handleSubmit} noValidate aria-labelledby="contact-form-heading">
+        <form className="contact-form" onSubmit={handleSubmit} noValidate aria-labelledby="contact-form-heading">
           <h3 id="contact-form-heading" className="contact-form__heading">
             {t('contact.form.heading')}
           </h3>

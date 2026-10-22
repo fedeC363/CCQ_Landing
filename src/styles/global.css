@@ -112,43 +112,6 @@ textarea {
   height: var(--icon-md);
 }
 
-/* Aparicion atada al scroll ------------------------------------------------
-   Cada bloque con .reveal entra transparente, difuminado y desplazado, y se
-   enfoca a medida que avanza el scroll (y se vuelve a desenfocar al subir).
-   - Atado a la posicion del scroll, no a un disparador: no hay JavaScript.
-   - Nunca arranca en opacidad 0 (ver --reveal-opacity-start).
-   - Sin soporte de animation-timeline, o con "reducir movimiento", no se
-     aplica nada y el contenido se ve normal.
-   - No usarlo en la barra superior, el hero ni la barra fija de WhatsApp, ni
-     sobre cada <video>: va en el contenedor de la grilla. */
-
-@keyframes reveal {
-  from {
-    opacity: var(--reveal-opacity-start);
-    filter: blur(var(--reveal-blur-start));
-    transform: translateY(var(--reveal-shift-start));
-  }
-  to {
-    opacity: 1;
-    filter: blur(0);
-    transform: none;
-  }
-}
-
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .reveal {
-      animation: reveal linear both;
-      animation-timeline: view();
-      animation-range: var(--reveal-range);
-    }
-
-    .reveal--end {
-      animation-range: var(--reveal-range-end);
-    }
-  }
-}
-
 /* Layout */
 
 .container {

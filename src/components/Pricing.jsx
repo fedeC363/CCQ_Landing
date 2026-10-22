@@ -13,15 +13,13 @@ export default function Pricing() {
   return (
     <section id="precios" className="section" aria-labelledby="pricing-title">
       <div className="container">
-        <header className="reveal">
-          <SectionMarker number="08" />
-          <h2 id="pricing-title" className="section-title">
-            {t('pricing.title')}
-          </h2>
-          <p className="section-subtitle">{t('pricing.subtitle')}</p>
-        </header>
+        <SectionMarker number="08" />
+        <h2 id="pricing-title" className="section-title">
+          {t('pricing.title')}
+        </h2>
+        <p className="section-subtitle">{t('pricing.subtitle')}</p>
 
-        <div className="pricing__plans reveal">
+        <div className="pricing__plans">
           {plans.map((plan) => {
             const copy = t(`pricing.plans.${plan.id}`)
             return (
@@ -61,12 +59,12 @@ export default function Pricing() {
         </div>
 
         {/* Los precios de los packs no se publican: se consultan por WhatsApp. */}
-        <a className="packs-cta reveal" href={whatsappUrl} {...externalLinkProps}>
+        <a className="packs-cta" href={whatsappUrl} {...externalLinkProps}>
           <span className="packs-cta__text">{t('pricing.packs.cta')}</span>
           <ArrowIcon className="icon packs-cta__icon" />
         </a>
 
-        <div className="pricing__notes reveal">
+        <div className="pricing__notes">
           <p className="pricing__note">
             <ClockIcon />
             {t('pricing.duration')}

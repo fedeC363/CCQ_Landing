@@ -6,7 +6,7 @@ export default function Stats() {
   return (
     <section className="stats">
       <div className="container">
-        <ul className="stats__list reveal">
+        <ul className="stats__list">
           {t('stats.items').map((item) => (
             <li key={item.label} className="stats__item">
               <span className="stats__value">{item.value}</span>

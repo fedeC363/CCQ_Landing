@@ -8,17 +8,15 @@ export default function Process() {
   return (
     <section className="section process" aria-labelledby="process-title">
       <div className="container">
-        <header className="reveal">
-          <SectionMarker number="07" />
-          <div className="process__header">
-            <h2 id="process-title" className="section-title">
-              {t('process.title')}
-            </h2>
-            <p className="process__subtitle">{t('process.subtitle')}</p>
-          </div>
-        </header>
+        <SectionMarker number="07" />
+        <div className="process__header">
+          <h2 id="process-title" className="section-title">
+            {t('process.title')}
+          </h2>
+          <p className="process__subtitle">{t('process.subtitle')}</p>
+        </div>
 
-        <ol className="steps reveal">
+        <ol className="steps">
           {steps.map((step, index) => {
             const isLast = index === steps.length - 1
             return (
