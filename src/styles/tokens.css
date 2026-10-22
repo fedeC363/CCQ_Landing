@@ -182,6 +182,17 @@
   --duration-fast: 150ms;
   --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
 
+  /* Aparicion atada al scroll (.reveal en global.css). Nunca arranca en
+     opacidad 0: el contenido siempre se lee, aun sin terminar el efecto. */
+  --reveal-opacity-start: 0.12;
+  --reveal-blur-start: 14px;
+  --reveal-shift-start: 40px;
+  --reveal-range: entry 0% cover 38%;
+  /* Para los ultimos bloques de la pagina (contacto y pie): la pagina no
+     llega a scrollear hasta "cover 38%" y quedarian a medio enfocar. Con este
+     rango terminan apenas entran enteros en pantalla, que siempre se alcanza. */
+  --reveal-range-end: entry 0% entry 100%;
+
   /* Capas */
   --z-header: 10;
   --z-mobile-bar: 20;

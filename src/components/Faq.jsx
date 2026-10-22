@@ -12,14 +12,14 @@ export default function Faq() {
   return (
     <section className="section section--divided" aria-labelledby="faq-title">
       <div className="container faq">
-        <div className="faq__intro">
+        <div className="faq__intro reveal">
           <SectionMarker number="10" />
           <h2 id="faq-title" className="section-title faq__title">
             {t('faq.title')}
           </h2>
         </div>
 
-        <div className="faq__list">
+        <div className="faq__list reveal">
           {t('faq.items').map((item, index) => {
             const isOpen = openIndex === index
             const buttonId = `faq-button-${index}`

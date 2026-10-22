@@ -9,13 +9,15 @@ export default function Problem() {
   return (
     <section className="section" aria-labelledby="problem-title">
       <div className="container">
-        <SectionMarker number="04" />
-        <h2 id="problem-title" className="section-title problem__title">
-          {t('problem.title')}
-        </h2>
-        <p className="section-subtitle">{t('problem.subtitle')}</p>
+        <header className="reveal">
+          <SectionMarker number="04" />
+          <h2 id="problem-title" className="section-title problem__title">
+            {t('problem.title')}
+          </h2>
+          <p className="section-subtitle">{t('problem.subtitle')}</p>
+        </header>
 
-        <ol className="problem__cards">
+        <ol className="problem__cards reveal">
           {t('problem.cards').map((card, index) => (
             <li key={card.title} className="problem__card">
               <span className="problem__number" aria-hidden="true">

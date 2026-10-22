@@ -14,7 +14,7 @@ export default function Offer() {
   return (
     <section className="section offer" aria-labelledby="offer-title">
       <div className="container offer__inner">
-        <div className="offer__intro">
+        <div className="offer__intro reveal">
           <SectionMarker number="06" />
           <h2 id="offer-title" className="section-title offer__title">
             {t('offer.title')}
@@ -30,7 +30,7 @@ export default function Offer() {
           </blockquote>
         </div>
 
-        <ol className="offer__list">
+        <ol className="offer__list reveal">
           {t('offer.items').map((item, index) => {
             const Icon = offerIcons[index]
             return (
