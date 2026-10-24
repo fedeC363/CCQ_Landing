@@ -1,4 +1,5 @@
 import { useLanguage } from './i18n/useLanguage.js'
+import { useOrganizationSchema } from './lib/useOrganizationSchema.js'
 import Header from './components/Header.jsx'
 import Hero from './components/Hero.jsx'
 import Stats from './components/Stats.jsx'
@@ -14,6 +15,7 @@ import MobileWhatsAppBar from './components/MobileWhatsAppBar.jsx'
 
 export default function App() {
   const { t } = useLanguage()
+  useOrganizationSchema()
 
   return (
     <>

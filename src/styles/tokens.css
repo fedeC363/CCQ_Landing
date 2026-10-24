@@ -155,6 +155,7 @@
   --mobile-button-height: 3.375rem; /* 54 */
   --input-height: 3rem; /* 48 */
   --lang-button-height: 2.25rem; /* 36 */
+  --touch-target: 2.75rem; /* 44: area tactil minima de los controles */
   --icon-sm: 1rem;
   --icon-md: 1.125rem;
   --icon-lg: 1.25rem;

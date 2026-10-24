@@ -11,13 +11,11 @@ npm run build     # build de producción en dist/
 npm run preview   # sirve el build para probarlo
 ```
 
-Para el formulario, copiar `.env.example` como `.env` y completar `VITE_FORM_ENDPOINT` con el endpoint de Formspree. Sin esa variable la página funciona igual: el formulario muestra el mensaje de error del copy y deriva a WhatsApp.
-
 ## Dónde se cambia cada cosa
 
 | Qué | Archivo |
 | --- | --- |
-| Nombre de marca, teléfono, eslogan, año, redes | `src/content/site.config.js` |
+| Nombre de marca, teléfono, mail, eslogan, año, redes | `src/content/site.config.js` |
 | Todos los textos en español | `src/content/es.json` |
 | Todos los textos en inglés | `src/content/en.json` |
 | Videos del hero y del portfolio | `src/data/portfolio.js` |
@@ -80,6 +78,14 @@ Más un poster por video (primer cuadro) en `public/posters/<id>.webp` y `.jpg`.
 
 Para sumar un video nuevo: agregarlo a `JOBS`, correr el script y agregar su entrada (con `quality`) en `portfolio.js`.
 
+## Contacto
+
+La página no tiene formulario. Los canales son WhatsApp (el principal: el único botón lima) y el mail, como alternativa discreta.
+
+- El mail aparece solo en el cierre (sección 11, con botón de copiar) y en el pie. No va arriba ni en el medio de la página.
+- Para que no lo junten los bots, en `site.config.js` está partido en usuario y dominio, y se arma recién en el navegador (`src/lib/email.js`), igual que el enlace `mailto:`.
+- Los datos estructurados schema.org (`Organization`) llevan solo nombre, mail y teléfono, y también se insertan en el navegador (`src/lib/useOrganizationSchema.js`).
+
 ## Secciones
 
 Orden aprobado, un componente por sección en `src/components/`:
@@ -88,8 +94,7 @@ Orden aprobado, un componente por sección en `src/components/`:
 
 ## Deploy en Vercel
 
-1. Importar el repositorio en Vercel. Detecta Vite solo (build `npm run build`, salida `dist`).
-2. Cargar `VITE_FORM_ENDPOINT` en Project Settings → Environment Variables.
+Importar el repositorio en Vercel. Detecta Vite solo (build `npm run build`, salida `dist`). No hace falta configurar variables de entorno.
 
 ## Pendientes (bloquean el lanzamiento, no el desarrollo)
 

@@ -20,6 +20,15 @@ export const site = {
     display: '+54 9 11 3177-5300',
   },
 
+  // Mail de contacto, partido en usuario y dominio para que la direccion
+  // completa no quede escrita en ningun lado y los bots que juntan mails no la
+  // encuentren. Se arma en tiempo de ejecucion con src/lib/email.js.
+  // Aparece SOLO en el cierre (seccion 11) y en el pie.
+  email: {
+    user: 'ccqstudiook',
+    domain: 'gmail.com',
+  },
+
   year: 2026,
 
   // Color de la barra del navegador en mobile. Debe coincidir con --color-bg

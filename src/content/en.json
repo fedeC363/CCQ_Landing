@@ -222,20 +222,15 @@
     "title": "Tell us what you need",
     "subtitle": "Message us on WhatsApp and we'll come back with a quote. No endless forms, no sales calls.",
     "whatsappButton": "WhatsApp {phone}",
-    "form": {
-      "heading": "Or leave us your details",
-      "name": "Name",
-      "email": "Email",
-      "brand": "Brand or store",
-      "need": "What do you need?",
-      "needHint": "Number of creatives, product, deadline",
-      "submit": "Send",
-      "success": "Done. We'll reply within 24 hours.",
-      "error": "We couldn't send your message. Message us on WhatsApp and we'll sort it out right away."
+    "email": {
+      "label": "Prefer email?",
+      "copy": "Copy",
+      "copied": "Copied"
     }
   },
   "footer": {
     "whatsapp": "WhatsApp: {phone}",
+    "email": "Email:",
     "copyright": "© {year} {name}"
   }
 }

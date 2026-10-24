@@ -222,20 +222,15 @@
     "title": "Contanos qué necesitás",
     "subtitle": "Escribinos por WhatsApp y te respondemos con un presupuesto. Sin formularios eternos ni llamadas de venta.",
     "whatsappButton": "WhatsApp {phone}",
-    "form": {
-      "heading": "O dejanos tus datos",
-      "name": "Nombre",
-      "email": "Email",
-      "brand": "Marca o tienda",
-      "need": "¿Qué necesitás?",
-      "needHint": "Cantidad de creativos, producto, plazo",
-      "submit": "Enviar",
-      "success": "Listo. Te respondemos dentro de las próximas 24 horas.",
-      "error": "No pudimos enviar tu mensaje. Escribinos por WhatsApp y lo resolvemos al instante."
+    "email": {
+      "label": "Si preferís escribir por mail:",
+      "copy": "Copiar",
+      "copied": "Copiado"
     }
   },
   "footer": {
     "whatsapp": "WhatsApp: {phone}",
+    "email": "Email:",
     "copyright": "© {year} {name}"
   }
 }

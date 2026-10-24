@@ -1174,27 +1174,27 @@
   color: var(--color-text-muted);
 }
 
-/* 11 Cierre y contacto ------------------------------------------------------ */
+/* 11 Cierre y contacto: bloque unico centrado, sin formulario ----------- */
 
 .contact {
   display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  gap: var(--space-11);
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
-.contact__intro {
-  flex: 1 1 27.5rem;
-  min-width: 0;
+.contact .section-marker {
+  align-self: stretch;
 }
 
 .contact__title {
-  max-width: 9ch;
+  max-width: 12ch;
   font-weight: var(--fw-black);
   font-stretch: var(--stretch-hero);
   font-size: var(--fs-contact);
   line-height: var(--lh-display);
   letter-spacing: var(--ls-display);
+  text-wrap: balance;
 }
 
 .contact__subtitle {
@@ -1216,86 +1216,47 @@
   }
 }
 
-.contact-form {
-  flex: 1 1 27.5rem;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-5);
-  padding: clamp(var(--space-6), 1rem + 2vw, var(--space-9));
-  background: var(--color-surface-raised);
-  border: var(--border-width) solid var(--color-border);
-}
-
-.contact-form__heading {
-  margin-bottom: var(--space-1);
-  font-size: var(--fs-h3);
-  font-weight: var(--fw-bold);
-}
-
-.contact-form__row {
+/* Mail: alternativa discreta. Chico, atenuado y sin boton lima. */
+.contact__email {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-5);
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1) var(--space-2);
+  margin-top: var(--space-5);
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
 }
 
-.contact-form__row .field {
-  flex: 1 1 12.5rem;
+.contact__email-link {
+  color: var(--color-text-muted);
+  text-decoration-color: var(--color-border-strong);
+  text-underline-offset: var(--space-1);
 }
 
-.field {
-  display: flex;
-  flex-direction: column;
+.contact__email-link:hover {
+  color: var(--color-accent);
+}
+
+.contact__copy {
+  display: inline-flex;
+  align-items: center;
   gap: var(--space-2);
-}
-
-.field__label {
-  font-size: var(--fs-sm);
-  font-weight: var(--fw-semibold);
-}
-
-.field__input {
-  width: 100%;
-  min-height: var(--input-height);
-  padding: 0 var(--space-4);
-  background: var(--color-bg);
-  border: var(--border-width) solid var(--color-border-strong);
+  min-width: var(--touch-target);
+  min-height: var(--touch-target);
+  padding: 0 var(--space-3);
+  background: transparent;
+  border: var(--border-width) solid var(--color-border);
   border-radius: var(--radius-sm);
-  font-size: var(--fs-base);
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  cursor: pointer;
 }
 
-.field__input--textarea {
-  padding-block: var(--space-3);
-  resize: vertical;
-}
-
-.field__input::placeholder {
-  color: var(--color-text-subtle);
-}
-
-.field__input:focus-visible {
-  outline-offset: 0;
-  border-color: var(--color-focus);
-}
-
-.contact-form__honeypot {
-  display: none;
-}
-
-.contact-form__status {
-  font-size: var(--fs-sm);
-}
-
-.contact-form__status:empty {
-  display: none;
-}
-
-.contact-form__status--success {
-  color: var(--color-success);
-}
-
-.contact-form__status--error {
-  color: var(--color-error);
+.contact__copy:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
 }
 
 /* 12 Pie -------------------------------------------------------------------- */
@@ -1330,6 +1291,12 @@
   font-family: var(--font-mono);
   font-size: var(--fs-xs);
   color: var(--color-text-muted);
+}
+
+.site-footer__contact {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
 }
 
 .site-footer__link {
