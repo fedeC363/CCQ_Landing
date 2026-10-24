@@ -1188,10 +1188,11 @@
 }
 
 .contact__title {
-  max-width: 12ch;
+  /* Un salto de linea en el texto (\n en es.json / en.json) se respeta. */
+  white-space: pre-line;
   font-weight: var(--fw-black);
   font-stretch: var(--stretch-hero);
-  font-size: var(--fs-contact);
+  font-size: min(var(--fs-contact), var(--fs-contact-fit));
   line-height: var(--lh-display);
   letter-spacing: var(--ls-display);
   text-wrap: balance;

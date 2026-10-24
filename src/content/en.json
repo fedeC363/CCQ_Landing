@@ -219,8 +219,8 @@
     ]
   },
   "contact": {
-    "title": "Tell us what you need",
-    "subtitle": "Message us on WhatsApp and we'll come back with a quote. No endless forms, no sales calls.",
+    "title": "We want to work with you\nGet in touch",
+    "subtitle": "Reach us quickly on WhatsApp or email and we'll send you our quote",
     "whatsappButton": "WhatsApp {phone}",
     "email": {
       "label": "Prefer email?",

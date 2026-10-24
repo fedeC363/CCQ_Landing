@@ -219,8 +219,8 @@
     ]
   },
   "contact": {
-    "title": "Contanos qué necesitás",
-    "subtitle": "Escribinos por WhatsApp y te respondemos con un presupuesto. Sin formularios eternos ni llamadas de venta.",
+    "title": "Queremos trabajar con vos\nContactanos",
+    "subtitle": "Comunicate con nosotros de forma rápida mediante WhatsApp o Mail y te pasaremos nuestro presupuesto",
     "whatsappButton": "WhatsApp {phone}",
     "email": {
       "label": "Si preferís escribir por mail:",
