@@ -45,6 +45,13 @@ export default function Faq() {
                 </h3>
                 <div id={panelId} role="region" aria-labelledby={buttonId} className="faq__answer" hidden={!isOpen}>
                   <p>{item.a}</p>
+                  {/* Subapartado opcional dentro de la respuesta (item.sub). */}
+                  {item.sub && (
+                    <div className="faq__sub">
+                      <h4 className="faq__sub-title">{item.sub.q}</h4>
+                      <p>{item.sub.a}</p>
+                    </div>
+                  )}
                 </div>
               </div>
             )

@@ -198,7 +198,11 @@
       },
       {
         "q": "Do I have to write the script?",
-        "a": "Yes. You send us the script for each creative and we handle all the production and editing. That way the video says exactly what your brand needs to say."
+        "a": "Yes. You send us the script for each creative and we handle all the production and editing. That way the video says exactly what your brand needs to say.",
+        "sub": {
+          "q": "What if I don't know how to write my scripts?",
+          "a": "That won't stop us from working together. For USD 1, we set up a meeting with you: you tell us about your product and what you want to get across, and we write the script for you."
+        }
       },
       {
         "q": "What's the difference between LIGHT and OMNI?",

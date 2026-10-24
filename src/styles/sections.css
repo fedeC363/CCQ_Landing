@@ -1174,6 +1174,20 @@
   color: var(--color-text-muted);
 }
 
+.faq__sub {
+  margin-top: var(--space-5);
+  padding-left: var(--space-4);
+  border-left: var(--border-width-strong) solid var(--color-accent);
+}
+
+.faq__sub-title {
+  margin: 0 0 var(--space-2);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-snug);
+  color: var(--color-text);
+}
+
 /* 11 Cierre y contacto: bloque unico centrado, sin formulario ----------- */
 
 .contact {

@@ -198,7 +198,11 @@
       },
       {
         "q": "¿Tengo que escribir el guion yo?",
-        "a": "Sí. Vos nos pasás el guion de cada creativo y nosotros nos encargamos de toda la producción y la edición. Es la forma de que el video diga exactamente lo que tu marca necesita decir."
+        "a": "Sí. Vos nos pasás el guion de cada creativo y nosotros nos encargamos de toda la producción y la edición. Es la forma de que el video diga exactamente lo que tu marca necesita decir.",
+        "sub": {
+          "q": "¿Qué sucede si no sé escribir mis guiones?",
+          "a": "Eso no es un impedimento para trabajar juntos. Por USD 1 hacemos una reunión con vos: nos contás de qué se trata tu producto y qué querés transmitir, y nosotros escribimos el guion por vos."
+        }
       },
       {
         "q": "¿Cuál es la diferencia entre LIGHT y OMNI?",
