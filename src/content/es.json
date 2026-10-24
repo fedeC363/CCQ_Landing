@@ -152,7 +152,7 @@
     "title": "Precios",
     "subtitle": "En dólares estadounidenses. Sin costos ocultos.",
     "currency": "USD",
-    "perCreative": "por creativo",
+    "perCreative": "La unidad",
     "plans": {
       "light": {
         "name": "Plan LIGHT",

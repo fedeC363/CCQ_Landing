@@ -152,7 +152,7 @@
     "title": "Pricing",
     "subtitle": "In US dollars. No hidden fees.",
     "currency": "USD",
-    "perCreative": "per creative",
+    "perCreative": "Per unit",
     "plans": {
       "light": {
         "name": "LIGHT plan",
