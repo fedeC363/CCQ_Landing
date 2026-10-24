@@ -335,6 +335,153 @@
   outline-offset: calc(var(--focus-ring-width) * -2);
 }
 
+/* Poster (WebP + JPEG) encima del video hasta que arranca */
+.poster {
+  position: absolute;
+  inset: 0;
+  transition: opacity var(--duration-fast) var(--ease-out);
+}
+
+.poster__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Nunca dibujar el texto alternativo en pantalla (ver Poster.jsx) */
+  color: transparent;
+  font-size: 0;
+}
+
+.poster--failed {
+  visibility: hidden;
+}
+
+.poster--hidden {
+  opacity: 0;
+}
+
+.video__element {
+  position: absolute;
+  inset: 0;
+}
+
+/* Tarjetas de video clickeables (portfolio y comparador) */
+.portfolio-card,
+.comparator__video {
+  display: block;
+  width: 100%;
+  padding: 0;
+  color: var(--color-text);
+  font: inherit;
+  cursor: pointer;
+}
+
+.portfolio-card__play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition:
+    opacity var(--duration-fast) var(--ease-out),
+    background-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+
+.portfolio-card:hover .portfolio-card__play,
+.portfolio-card:focus-visible .portfolio-card__play,
+.comparator__video .portfolio-card__play {
+  opacity: 1;
+}
+
+.portfolio-card:hover .portfolio-card__play,
+.comparator__video:hover .portfolio-card__play {
+  background: var(--color-action);
+  border-color: var(--color-action);
+  color: var(--color-on-action);
+}
+
+/* En pantallas tactiles no hay hover: el boton de play se ve siempre. */
+@media (hover: none) {
+  .portfolio-card__play {
+    opacity: 1;
+  }
+}
+
+.portfolio-card:focus-visible,
+.comparator__video:focus-visible {
+  outline-offset: var(--focus-ring-offset);
+}
+
+/* Reproductor completo (<dialog>) */
+.video-modal {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  padding: var(--space-4);
+  border: 0;
+  background: transparent;
+  color: var(--color-text);
+}
+
+.video-modal[open] {
+  display: grid;
+  place-items: center;
+}
+
+.video-modal::backdrop {
+  background: var(--color-modal-backdrop);
+}
+
+.video-modal__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  width: min(100%, calc((100dvh - var(--modal-chrome)) * 9 / 16));
+}
+
+.video-modal__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.video-modal__label {
+  padding: var(--badge-pad-y) var(--space-3);
+  background: var(--color-text);
+  color: var(--color-bg);
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-wide);
+}
+
+.video-modal__close {
+  display: grid;
+  place-items: center;
+  width: var(--button-height-sm);
+  height: var(--button-height-sm);
+  padding: 0;
+  background: var(--color-surface-raised);
+  border: var(--border-width) solid var(--color-border-strong);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+}
+
+.video-modal__close:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.video-modal__video {
+  width: 100%;
+  aspect-ratio: var(--video-ratio);
+  border-radius: var(--radius-lg);
+  background: var(--color-media);
+}
+
 /* 03 Barra de credibilidad -------------------------------------------------- */
 
 .stats {
@@ -489,7 +636,7 @@
 
   .portfolio__list {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--space-5);
     width: auto;
     padding: 0;
@@ -817,6 +964,75 @@
 
 .plan--featured :focus-visible {
   outline-color: var(--color-accent);
+}
+
+
+/* Comparador LIGHT / OMNI */
+
+.comparator {
+  margin-top: var(--space-5);
+  padding: var(--space-8);
+  border: var(--border-width) solid var(--color-border-strong);
+}
+
+.comparator__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-5);
+  max-width: var(--comparator-max);
+  margin-inline: auto;
+}
+
+.comparator__label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin-bottom: var(--space-3);
+}
+
+.comparator__name {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: var(--fw-black);
+  font-stretch: var(--stretch-display);
+  font-size: var(--fs-quote);
+  line-height: var(--lh-none);
+}
+
+.comparator__item--omni .comparator__name::before {
+  content: "";
+  width: var(--square-sm);
+  height: var(--square-sm);
+  background: var(--color-accent);
+}
+
+.comparator__caption {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+}
+
+.comparator__badge {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-3);
+  padding: var(--badge-pad-y) var(--space-2);
+  background: var(--color-text);
+  color: var(--color-bg);
+  font-family: var(--font-mono);
+  font-size: var(--fs-2xs);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-wide);
+}
+
+@media (max-width: 47.99rem) {
+  .comparator {
+    padding: var(--space-5) var(--space-4);
+  }
+
+  .comparator__list {
+    gap: var(--space-3);
+  }
 }
 
 /* Packs: bloque de consulta por WhatsApp */

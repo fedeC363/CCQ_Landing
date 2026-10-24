@@ -14,7 +14,12 @@
     "languageSelector": "Language",
     "home": "{name}, home",
     "playVideo": "Play video",
-    "opensWhatsApp": "Opens WhatsApp in a new tab"
+    "opensWhatsApp": "Opens WhatsApp in a new tab",
+    "closeVideo": "Close video",
+    "video": {
+      "sample": "Video sample",
+      "sampleWithQuality": "Video sample {quality}"
+    }
   },
   "languages": {
     "es": {

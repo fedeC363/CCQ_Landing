@@ -3,6 +3,7 @@ import { plans } from '../data/pricing.js'
 import { formatPrice } from '../lib/format.js'
 import { externalLinkProps, useWhatsAppUrl } from '../lib/whatsapp.js'
 import SectionMarker from './SectionMarker.jsx'
+import PlanComparator from './PlanComparator.jsx'
 import { ArrowIcon, CardIcon, CheckIcon, ClockIcon } from './Icons.jsx'
 
 export default function Pricing() {
@@ -57,6 +58,8 @@ export default function Pricing() {
             )
           })}
         </div>
+
+        <PlanComparator />
 
         {/* Los precios de los packs no se publican: se consultan por WhatsApp. */}
         <a className="packs-cta" href={whatsappUrl} {...externalLinkProps}>

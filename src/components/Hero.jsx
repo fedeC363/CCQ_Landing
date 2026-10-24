@@ -1,7 +1,7 @@
 import { useLanguage } from '../i18n/useLanguage.js'
 import { heroVideo } from '../data/portfolio.js'
 import { externalLinkProps, useWhatsAppUrl } from '../lib/whatsapp.js'
-import VideoPlayer from './VideoPlayer.jsx'
+import HeroVideo from './HeroVideo.jsx'
 import { ArrowIcon } from './Icons.jsx'
 
 // Separa el titular para subrayar la parte de hero.titleHighlight ("24 horas").
@@ -49,7 +49,7 @@ export default function Hero() {
             <span className="hero__corner hero__corner--tr" aria-hidden="true" />
             <span className="hero__corner hero__corner--bl" aria-hidden="true" />
             <span className="hero__corner hero__corner--br" aria-hidden="true" />
-            <VideoPlayer video={heroVideo} autoPlay lazy={false} variant="hero" />
+            <HeroVideo video={heroVideo} />
           </div>
         </div>
 

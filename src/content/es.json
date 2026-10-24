@@ -14,7 +14,12 @@
     "languageSelector": "Idioma",
     "home": "{name}, inicio",
     "playVideo": "Reproducir video",
-    "opensWhatsApp": "Se abre WhatsApp en una pestaña nueva"
+    "opensWhatsApp": "Se abre WhatsApp en una pestaña nueva",
+    "closeVideo": "Cerrar video",
+    "video": {
+      "sample": "Muestra de video",
+      "sampleWithQuality": "Muestra de video {quality}"
+    }
   },
   "languages": {
     "es": {

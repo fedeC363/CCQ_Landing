@@ -1,36 +1,63 @@
 #!/usr/bin/env node
-// Comprime los videos originales a formato web y genera el poster de cada uno.
-//
-//   videos-src/*.mp4        -> public/videos/<nombre>.mp4   (con audio, AAC 128k)
-//   videos-src/loop/*.mp4   -> public/videos/<nombre>.mp4   (sin audio, para loops como el hero)
-//   cada video              -> public/posters/<nombre>.jpg  (primer frame)
-//
-// Salida: 1080x1920 (9:16), H.264, CRF 28, yuv420p, faststart (empieza a
-// reproducir antes de terminar de descargar).
+// Genera las versiones web de los videos y sus posters a partir de los
+// originales. Los originales no se versionan: se leen de una carpeta aparte.
 //
 // Uso:
-//   npm run videos                    procesa solo lo nuevo o modificado
-//   npm run videos -- --force         reprocesa todo
-//   npm run videos -- --poster-at=1.5 toma el poster en el segundo 1.5
+//   npm run videos -- --src=../videos          procesa lo nuevo o modificado
+//   npm run videos -- --src=../videos --force  reprocesa todo
+//   npm run videos -- --src=../videos --only=hero,portfolio-2   solo esos ids
+//   (sin --src se usa la carpeta videos-src/ del proyecto)
 //
-// Requiere ffmpeg instalado y en el PATH.
+// Requiere ffmpeg en el PATH.
+//
+// Para agregar o cambiar un video, editar JOBS mas abajo: cada entrada dice
+// que archivo original usar, con que id publicarlo y que versiones generar.
+// Los ids son neutros a proposito: los nombres de archivo terminan en las URLs
+// y no tienen que delatar nombres internos.
 
 import { spawnSync } from 'node:child_process'
-import { existsSync, mkdirSync, readdirSync, statSync } from 'node:fs'
-import { basename, dirname, extname, join } from 'node:path'
+import { existsSync, mkdirSync, statSync } from 'node:fs'
+import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const ROOT = dirname(fileURLToPath(import.meta.url))
-const SRC_DIR = join(ROOT, 'videos-src')
-const LOOP_DIR = join(SRC_DIR, 'loop')
 const OUT_VIDEOS = join(ROOT, 'public', 'videos')
 const OUT_POSTERS = join(ROOT, 'public', 'posters')
-const VIDEO_EXTENSIONS = new Set(['.mp4', '.mov', '.m4v', '.webm', '.mkv', '.avi'])
+
+// Versiones (perfiles). Todas: MP4, H.264, yuv420p y +faststart (el video
+// empieza a reproducirse antes de terminar de bajar). Solo MP4 por ahora.
+const PROFILES = {
+  // Bucle decorativo del hero: sin pista de audio, nunca.
+  // 10 s (el minimo del rango 10-15 s): a 15 s el hero solo ya pesaba 5 MB.
+  hero: { suffix: '', width: 1080, height: 1920, crf: 26, duration: 10, audio: false },
+  // Vista previa del portfolio: en bucle, sin audio, liviana.
+  preview: { suffix: '-preview', width: 720, height: 1280, crf: 30, duration: 15, audio: false },
+  // Version completa del portfolio: se abre al tocar, con audio.
+  full: { suffix: '-full', width: 1080, height: 1920, crf: 26, duration: null, audio: true },
+  // Muestras del comparador LIGHT / OMNI: con audio.
+  sample: { suffix: '', width: 1080, height: 1920, crf: 26, duration: null, audio: true },
+}
+
+// Posters: WebP con respaldo JPEG, a la resolucion en la que se muestran.
+const POSTER_WIDTH = { hero: 1080, preview: 720, full: 720, sample: 720 }
+
+const JOBS = [
+  // [PENDIENTE] Falta el original del hero (HERO.mp4).
+  { id: 'hero', file: 'HERO.mp4', profiles: ['hero'] },
+  { id: 'portfolio-1', file: 'PIXARD.mp4', profiles: ['preview', 'full'] },
+  { id: 'portfolio-2', file: 'LIGHT_1.mp4', profiles: ['preview', 'full'] },
+  { id: 'portfolio-3', file: 'LIGHT_2.mp4', profiles: ['preview', 'full'] },
+  { id: 'portfolio-4', file: 'OMNI.mp4', profiles: ['preview', 'full'] },
+  { id: 'muestra-light', file: 'LIGHT_MUESTRA.mp4', profiles: ['sample'] },
+  { id: 'muestra-omni', file: 'MUESTRA_OMNI.mp4', profiles: ['sample'] },
+]
 
 const args = process.argv.slice(2)
 const force = args.includes('--force')
-const posterArg = args.find((arg) => arg.startsWith('--poster-at='))
-const posterAt = posterArg ? posterArg.split('=')[1] : '0'
+const srcArg = args.find((arg) => arg.startsWith('--src='))
+const onlyArg = args.find((arg) => arg.startsWith('--only='))
+const only = onlyArg ? new Set(onlyArg.slice('--only='.length).split(',')) : null
+const SRC_DIR = srcArg ? resolve(ROOT, srcArg.slice('--src='.length)) : join(ROOT, 'videos-src')
 
 function fail(message) {
   console.error(`\n✖ ${message}\n`)
@@ -38,92 +65,78 @@ function fail(message) {
 }
 
 if (spawnSync('ffmpeg', ['-version'], { stdio: 'ignore' }).status !== 0) {
-  fail('No se encontro ffmpeg. Instalalo (https://ffmpeg.org/download.html, o "winget install ffmpeg" en Windows) y volve a correr el script.')
+  fail('No se encontro ffmpeg. Instalalo ("winget install ffmpeg" en Windows) y volve a correr el script.')
 }
-
-if (!existsSync(SRC_DIR)) {
-  mkdirSync(LOOP_DIR, { recursive: true })
-  fail('Cree la carpeta videos-src/. Pone ahi los videos originales (y en videos-src/loop/ los que van sin audio) y volve a correr el script.')
-}
+if (!existsSync(SRC_DIR)) fail(`No existe la carpeta de originales: ${SRC_DIR}`)
 
 mkdirSync(OUT_VIDEOS, { recursive: true })
 mkdirSync(OUT_POSTERS, { recursive: true })
 
-const listVideos = (dir) =>
-  existsSync(dir)
-    ? readdirSync(dir)
-        .filter((file) => VIDEO_EXTENSIONS.has(extname(file).toLowerCase()))
-        .map((file) => join(dir, file))
-    : []
-
-const jobs = [
-  ...listVideos(SRC_DIR).map((input) => ({ input, loop: false })),
-  ...listVideos(LOOP_DIR).map((input) => ({ input, loop: true })),
-]
-
-if (jobs.length === 0) fail('No hay videos en videos-src/ ni en videos-src/loop/.')
-
 const isUpToDate = (input, output) => existsSync(output) && statSync(output).mtimeMs >= statSync(input).mtimeMs
 
-function run(ffmpegArgs) {
+function ffmpeg(ffmpegArgs) {
   const result = spawnSync('ffmpeg', ['-hide_banner', '-loglevel', 'error', '-y', ...ffmpegArgs], { stdio: 'inherit' })
   return result.status === 0
 }
 
-const SCALE_9_16 =
-  'scale=1080:1920:force_original_aspect_ratio=decrease,pad=1080:1920:(ow-iw)/2:(oh-ih)/2,setsar=1'
+const scale = (w, h) =>
+  `scale=${w}:${h}:force_original_aspect_ratio=decrease,pad=${w}:${h}:(ow-iw)/2:(oh-ih)/2,setsar=1`
 
-const done = []
+const mb = (file) => (statSync(file).size / 1024 / 1024).toFixed(2)
+const kb = (file) => Math.round(statSync(file).size / 1024)
+
 let failures = 0
+let skipped = 0
 
-for (const { input, loop } of jobs) {
-  const name = basename(input, extname(input))
-  const videoOut = join(OUT_VIDEOS, `${name}.mp4`)
-  const posterOut = join(OUT_POSTERS, `${name}.jpg`)
-
-  if (!force && isUpToDate(input, videoOut) && isUpToDate(input, posterOut)) {
-    console.log(`• ${name}: sin cambios, se saltea`)
-    done.push({ name, loop })
+for (const job of JOBS) {
+  if (only && !only.has(job.id)) continue
+  const input = join(SRC_DIR, job.file)
+  if (!existsSync(input)) {
+    console.warn(`! ${job.id}: no esta ${job.file} en ${SRC_DIR}, se saltea`)
+    skipped++
     continue
   }
 
-  console.log(`▶ ${name}${loop ? ' (loop, sin audio)' : ''}`)
-
-  const audioArgs = loop ? ['-an'] : ['-c:a', 'aac', '-b:a', '128k', '-ac', '2']
-  const videoOk = run([
-    '-i', input,
-    '-vf', SCALE_9_16,
-    '-c:v', 'libx264',
-    '-preset', 'slow',
-    '-crf', '28',
-    '-profile:v', 'high',
-    '-pix_fmt', 'yuv420p',
-    '-movflags', '+faststart',
-    ...audioArgs,
-    videoOut,
-  ])
-
-  if (!videoOk) {
-    console.error(`  ✖ fallo la compresion de ${name}`)
-    failures++
-    continue
+  for (const name of job.profiles) {
+    const p = PROFILES[name]
+    const output = join(OUT_VIDEOS, `${job.id}${p.suffix}.mp4`)
+    if (!force && isUpToDate(input, output)) {
+      console.log(`• ${job.id}${p.suffix}.mp4: sin cambios`)
+      continue
+    }
+    const ok = ffmpeg([
+      '-i', input,
+      ...(p.duration ? ['-t', String(p.duration)] : []),
+      '-vf', scale(p.width, p.height),
+      '-c:v', 'libx264', '-preset', 'slow', '-crf', String(p.crf),
+      '-profile:v', 'high', '-pix_fmt', 'yuv420p',
+      ...(p.audio ? ['-c:a', 'aac', '-b:a', '128k', '-ac', '2'] : ['-an']),
+      '-movflags', '+faststart',
+      output,
+    ])
+    if (ok) console.log(`✔ ${job.id}${p.suffix}.mp4  ${mb(output)} MB`)
+    else {
+      console.error(`✖ fallo ${job.id}${p.suffix}.mp4`)
+      failures++
+    }
   }
 
-  const posterOk = run(['-ss', posterAt, '-i', videoOut, '-frames:v', '1', '-q:v', '3', posterOut])
-  if (!posterOk) {
-    console.error(`  ✖ fallo el poster de ${name}`)
-    failures++
-    continue
+  // Un poster por video, tomado del primer cuadro (coincide con el inicio).
+  const posterWidth = Math.max(...job.profiles.map((name) => POSTER_WIDTH[name]))
+  const posterHeight = Math.round((posterWidth * 16) / 9)
+  const webp = join(OUT_POSTERS, `${job.id}.webp`)
+  const jpg = join(OUT_POSTERS, `${job.id}.jpg`)
+  if (force || !isUpToDate(input, webp) || !isUpToDate(input, jpg)) {
+    const vf = scale(posterWidth, posterHeight)
+    const okWebp = ffmpeg(['-i', input, '-frames:v', '1', '-vf', vf, '-c:v', 'libwebp', '-quality', '72', webp])
+    const okJpg = ffmpeg(['-i', input, '-frames:v', '1', '-vf', vf, '-q:v', '5', jpg])
+    if (okWebp && okJpg) console.log(`✔ posters ${job.id}  webp ${kb(webp)} KB / jpg ${kb(jpg)} KB`)
+    else {
+      console.error(`✖ fallo el poster de ${job.id}`)
+      failures++
+    }
   }
-
-  const sizeMb = (statSync(videoOut).size / 1024 / 1024).toFixed(1)
-  console.log(`  ✔ public/videos/${name}.mp4 (${sizeMb} MB) + public/posters/${name}.jpg`)
-  done.push({ name, loop })
 }
 
-console.log('\nPara usarlos, en src/data/portfolio.js:')
-for (const { name } of done) {
-  console.log(`  src: '/videos/${name}.mp4', poster: '/posters/${name}.jpg'`)
-}
-
-if (failures > 0) fail(`${failures} video(s) con errores.`)
+if (skipped) console.warn(`\n${skipped} video(s) sin original; revisar los avisos de arriba.`)
+if (failures) fail(`${failures} archivo(s) con errores.`)

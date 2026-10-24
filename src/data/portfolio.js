@@ -1,41 +1,46 @@
-// Videos de la landing. Todos son verticales 9:16, de hasta 1 minuto.
+// Videos de la landing. Todos son verticales 9:16.
 //
-// Cada entrada:
-//   id           identificador unico
-//   src          video comprimido en /public/videos (null = todavia no hay video)
-//   poster       imagen que se muestra antes de reproducir, en /public/posters
-//   description  texto alternativo para lectores de pantalla y para cuando el
-//                video no carga. Describe lo que se ve, en los dos idiomas.
+// Los archivos salen de compress-videos.mjs (ver README). Los ids y nombres de
+// archivo son neutros: nunca se muestran en pantalla.
 //
-// Para generar src y poster a partir de los originales, ver compress-videos.mjs
-// y el README.
-//
-// [PENDIENTE] Los creativos reales todavia no fueron entregados. Todo lo que
-// sigue son archivos de prueba (posters grises, sin video) para que el sistema
-// de carga diferida quede listo. Reemplazar por los 6 u 8 destacados.
+// quality: 'LIGHT', 'OMNI' o null. Se usa SOLO para el texto alternativo
+//   ("Muestra de video LIGHT"); en el portfolio no se muestra en pantalla.
+//   Con null el texto queda corto ("Muestra de video"). No se deduce del
+//   nombre del archivo: se asigna a mano aca.
+// poster: WebP con respaldo JPEG.
 
+const poster = (id) => ({ webp: `/posters/${id}.webp`, jpg: `/posters/${id}.jpg` })
+
+// Bucle decorativo: sin audio, sin controles. Primeros 10 s de HERO.mp4.
 export const heroVideo = {
   id: 'hero',
-  src: null, // ej: '/videos/hero.mp4' (comprimido con la carpeta loop/, sin audio)
-  poster: '/posters/test-hero.svg',
-  description: {
-    es: 'Video de prueba del hero',
-    en: 'Hero test video',
-  },
+  quality: 'OMNI',
+  src: '/videos/hero.mp4',
+  poster: poster('hero'),
 }
+
+// Orden decidido: no cambiarlo.
+// preview: vista previa en bucle, sin audio (se carga al entrar en pantalla).
+// full: version completa con audio (se descarga recien al tocar el video).
+export const portfolio = [
+  { id: 'portfolio-1', quality: null }, // PIXARD: sin plan definido
+  { id: 'portfolio-2', quality: 'LIGHT' }, // LIGHT_1
+  { id: 'portfolio-3', quality: 'LIGHT' }, // LIGHT_2
+  { id: 'portfolio-4', quality: 'OMNI' }, // OMNI
+].map((video) => ({
+  ...video,
+  preview: `/videos/${video.id}-preview.mp4`,
+  full: `/videos/${video.id}-full.mp4`,
+  poster: poster(video.id),
+}))
 
 // Cuantos videos se muestran antes del boton "Ver mas trabajos". Si la lista
 // tiene mas entradas que este numero, aparece el boton.
-export const FEATURED_COUNT = 8
+export const FEATURED_COUNT = 4
 
-const testVideo = (n) => ({
-  id: `test-${n}`,
-  src: null, // ej: `/videos/creativo-${n}.mp4`
-  poster: `/posters/test-${n}.svg`,
-  description: {
-    es: `Video de prueba ${n}`,
-    en: `Test video ${n}`,
-  },
-})
-
-export const portfolio = ['01', '02', '03', '04', '05', '06', '07', '08'].map(testVideo)
+// Comparador de la seccion de precios: una muestra por plan, con audio.
+// plan coincide con el id de pricing.js (de ahi sale la etiqueta visible).
+export const planSamples = [
+  { id: 'muestra-light', plan: 'light', quality: 'LIGHT', src: '/videos/muestra-light.mp4', poster: poster('muestra-light') },
+  { id: 'muestra-omni', plan: 'omni', quality: 'OMNI', src: '/videos/muestra-omni.mp4', poster: poster('muestra-omni') },
+]

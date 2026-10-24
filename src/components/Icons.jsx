@@ -50,6 +50,12 @@ export const MinusIcon = (props) => (
   </Svg>
 )
 
+export const CloseIcon = (props) => (
+  <Svg {...props}>
+    <path d="M6 6l12 12M18 6L6 18" />
+  </Svg>
+)
+
 export const ClockIcon = (props) => (
   <Svg strokeWidth={1.8} {...props}>
     <circle cx="12" cy="12" r="9" />
