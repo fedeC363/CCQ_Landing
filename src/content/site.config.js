@@ -8,10 +8,10 @@ export const site = {
   // Nombre corto usado en el mensaje precargado de WhatsApp ("Hola CCQ, ...").
   shortName: 'CCQ',
 
-  // [PENDIENTE] Eslogan definitivo. Se usa la opcion 1, recomendada en el copy.
+  // Eslogan: va debajo del nombre en la barra superior y en el pie.
   slogan: {
-    es: 'Creativos que rinden, en 24 horas.',
-    en: 'Creatives that perform, in 24 hours.',
+    es: 'Si lo podés imaginar, lo producimos.',
+    en: 'If you can imagine it, we produce it.',
   },
 
   whatsapp: {

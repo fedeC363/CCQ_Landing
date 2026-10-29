@@ -102,7 +102,6 @@ Importar el repositorio en Vercel. Detecta Vite solo (build `npm run build`, sal
 
 ## Pendientes (bloquean el lanzamiento, no el desarrollo)
 
-- Eslogan definitivo (hoy se usa la opción 1 recomendada).
 - Reseñas de clientes (mínimo tres) para publicar la sección 09.
 - Si Mercado Pago cobra en pesos a cotización del día.
 - Logo, favicon, imagen para Open Graph y dominio.

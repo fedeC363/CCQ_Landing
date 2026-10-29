@@ -52,11 +52,11 @@
 .brand__slogan {
   font-family: var(--font-mono);
   font-size: var(--fs-2xs);
-  line-height: var(--lh-none);
+  line-height: var(--lh-snug);
   color: var(--color-text-muted);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  /* Nunca se corta con "...": si no entra al lado del selector de idioma
+     (celulares chicos), pasa a una segunda linea. */
+  text-wrap: balance;
 }
 
 .site-header__actions {
