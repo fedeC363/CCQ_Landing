@@ -975,6 +975,22 @@
   border: var(--border-width) solid var(--color-border-strong);
 }
 
+.comparator__title {
+  max-width: var(--comparator-max);
+  margin: 0 auto var(--space-6);
+  font-weight: var(--fw-black);
+  font-stretch: var(--stretch-display);
+  font-size: var(--fs-quote);
+  line-height: var(--lh-none);
+}
+
+.comparator__note {
+  max-width: var(--comparator-max);
+  margin: var(--space-4) auto 0;
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+}
+
 .comparator__list {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1037,6 +1053,29 @@
 
 /* Packs: bloque de consulta por WhatsApp */
 
+.packs {
+  margin-top: var(--space-5);
+  padding: var(--space-8);
+  border: var(--border-width) solid var(--color-border-strong);
+}
+
+.packs__title {
+  font-weight: var(--fw-black);
+  font-stretch: var(--stretch-display);
+  font-size: var(--fs-quote);
+  line-height: var(--lh-none);
+}
+
+.packs__text {
+  max-width: var(--measure-text);
+  margin-top: var(--space-3);
+  color: var(--color-text-muted);
+}
+
+.packs .packs-cta {
+  margin-top: var(--space-6);
+}
+
 .packs-cta {
   display: flex;
   align-items: center;
@@ -1094,6 +1133,10 @@
   .plan,
   .packs-cta {
     padding-inline: var(--space-6);
+  }
+
+  .packs {
+    padding: var(--space-6) var(--space-4);
   }
 
   .plan {

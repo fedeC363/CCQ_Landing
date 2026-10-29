@@ -150,7 +150,7 @@
   },
   "pricing": {
     "title": "Precios",
-    "subtitle": "En dólares estadounidenses. Sin costos ocultos.",
+    "subtitle": "Precios por creativo, en dólares estadounidenses. Los packs los armamos según el volumen que necesites.",
     "currency": "USD",
     "perCreative": "La unidad",
     "plans": {
@@ -179,7 +179,13 @@
         "cta": "Pedir creativos"
       }
     },
+    "samples": {
+      "title": "Mirá un ejemplo de cada plan",
+      "note": "Cada muestra es un proyecto distinto."
+    },
     "packs": {
+      "title": "Packs",
+      "text": "La mayoría de nuestros clientes trabaja con packs: cuanto más volumen, menor es el precio por creativo. Los armamos según lo que necesites.",
       "cta": "Consultar por precio de los packs"
     },
     "duration": "Cada creativo incluye hasta 1 minuto de video. Entre 1 y 2 minutos se cobra como dos creativos.",

@@ -61,11 +61,16 @@ export default function Pricing() {
 
         <PlanComparator />
 
-        {/* Los precios de los packs no se publican: se consultan por WhatsApp. */}
-        <a className="packs-cta" href={whatsappUrl} {...externalLinkProps}>
-          <span className="packs-cta__text">{t('pricing.packs.cta')}</span>
-          <ArrowIcon className="icon packs-cta__icon" />
-        </a>
+        {/* Los precios de los packs no se publican a proposito: se consultan
+            por WhatsApp. El bloque explica que existen y que son lo habitual. */}
+        <div className="packs">
+          <h3 className="packs__title">{t('pricing.packs.title')}</h3>
+          <p className="packs__text">{t('pricing.packs.text')}</p>
+          <a className="packs-cta" href={whatsappUrl} {...externalLinkProps}>
+            <span className="packs-cta__text">{t('pricing.packs.cta')}</span>
+            <ArrowIcon className="icon packs-cta__icon" />
+          </a>
+        </div>
 
         <div className="pricing__notes">
           <p className="pricing__note">

@@ -136,6 +136,7 @@
   --hero-pad-top: clamp(3rem, 1.5rem + 4vw, 5rem);
   --gutter: clamp(1.25rem, 0.75rem + 2vw, 2rem);
   --container-max: 76rem; /* 1216px */
+  --measure-text: 40rem; /* ancho maximo de parrafos sueltos */
 
   /* Bordes, radios y sombras */
   --border-width: 1px;

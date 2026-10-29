@@ -6,12 +6,14 @@ import Poster from './Poster.jsx'
 import VideoModal from './VideoModal.jsx'
 import { PlayIcon } from './Icons.jsx'
 
-// Comparador LIGHT / OMNI: responde "cual de los dos planes elijo".
+// Muestras de los planes: un ejemplo de LIGHT y uno de OMNI.
 //
-// Son dos reproductores lado a lado y no un unico reproductor con
-// interruptor: las dos muestras son videos distintos (otra escena, otra
-// duracion), asi que mantener el momento de reproduccion al cambiar no
-// mostraria la misma escena en dos calidades.
+// NO es un comparador (el nombre del componente quedo de antes): las dos
+// muestras son proyectos distintos (otro guion, otro producto, otra
+// duracion), asi que no se presentan como la misma escena en dos calidades.
+// Por eso el titulo habla de "un ejemplo de cada plan" y abajo se aclara que
+// cada muestra es un proyecto distinto. Ningun texto visible puede sugerir
+// comparacion.
 //
 // Al llegar a la seccion solo se ven los posters; cada muestra se descarga
 // recien cuando el visitante la toca. La etiqueta del plan se ve en la tarjeta
@@ -23,6 +25,7 @@ export default function PlanComparator() {
 
   return (
     <div className="comparator">
+      <h3 className="comparator__title">{t('pricing.samples.title')}</h3>
       <ul className="comparator__list">
         {planSamples.map((sample) => {
           const label = t(`pricing.plans.${sample.plan}.short`)
@@ -52,6 +55,7 @@ export default function PlanComparator() {
           )
         })}
       </ul>
+      <p className="comparator__note">{t('pricing.samples.note')}</p>
 
       <VideoModal video={active} onClose={() => setActive(null)} />
     </div>
