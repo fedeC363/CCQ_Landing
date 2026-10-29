@@ -67,12 +67,16 @@ npm run videos -- --src=../videos
 
 Qué original va con qué video se define en la lista `JOBS`, al principio del script. Cada video genera estas versiones (todas MP4, H.264, `yuv420p`, `-movflags +faststart`):
 
-| Versión | Resolución | Duración | Audio | CRF |
-| --- | --- | --- | --- | --- |
-| Hero | 1080x1920 | 10 s | sin pista | 26 |
-| Vista previa del portfolio | 720x1280 | 15 s | sin pista | 30 |
-| Versión completa del portfolio | 1080x1920 | real | AAC 128k | 26 |
-| Muestras LIGHT y OMNI | 1080x1920 | real | AAC 128k | 26 |
+| Versión | Resolución | Duración | Audio | CRF | Techo de bitrate (maxrate / bufsize) | Peso actual |
+| --- | --- | --- | --- | --- | --- | --- |
+| Hero | 720x1280 | 10 s | sin pista | 30 | 1200k / 2400k | 1,1 MB |
+| Vista previa del portfolio | 720x1280 | 15 s | sin pista | 32 | 650k / 1300k | 1,1 a 1,2 MB |
+| Versión completa del portfolio | 1080x1920 | real | AAC 128k | 30 | 1800k / 3600k | 4,4 a 7,5 MB |
+| Muestras LIGHT y OMNI | 1080x1920 | real | AAC 128k | 30 | 2500k / 5000k | 6,1 y 8,1 MB |
+
+Pensado para mobile. El CRF fija la calidad y el techo de bitrate evita picos en escenas con mucho movimiento o textura (pasto, espuma). Las muestras tienen el techo más alto a propósito: son las que demuestran calidad; si alguna se ve peor, se le sube la calidad aunque pese más.
+
+Peso medido (build de producción): al abrir la página ~1,6 MB (hero, posters, fuentes, JS y CSS); recorriéndola entera ~6,2 MB (se suman las cuatro vistas previas). Las versiones completas y las muestras bajan solo al tocarlas.
 
 Más un poster por video (primer cuadro) en `public/posters/<id>.webp` y `.jpg`.
 

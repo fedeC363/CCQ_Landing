@@ -27,22 +27,27 @@ const OUT_POSTERS = join(ROOT, 'public', 'posters')
 // Versiones (perfiles). Todas: MP4, H.264, yuv420p y +faststart (el video
 // empieza a reproducirse antes de terminar de bajar). Solo MP4 por ahora.
 const PROFILES = {
-  // Bucle decorativo del hero: sin pista de audio, nunca.
-  // 10 s (el minimo del rango 10-15 s): a 15 s el hero solo ya pesaba 5 MB.
-  hero: { suffix: '', width: 1080, height: 1920, crf: 26, duration: 10, audio: false },
+  // Pensados para mobile, que es la mayoria del trafico. CRF fija la calidad;
+  // maxrate/bufsize ponen un techo de bitrate para que las escenas con mucho
+  // movimiento no generen picos de peso.
+  //
+  // Bucle decorativo del hero: sin pista de audio, nunca. 720x1280 porque se
+  // ve chico, detras de un marco: a ese tamaño 1080 no se distingue y es el
+  // archivo que mas pesa en la apertura de la pagina. 10 s (minimo del rango).
+  hero: { suffix: '', width: 720, height: 1280, crf: 30, maxrate: '1200k', bufsize: '2400k', duration: 10, audio: false },
   // Vista previa del portfolio: en bucle, sin audio, liviana.
-  preview: { suffix: '-preview', width: 720, height: 1280, crf: 30, duration: 15, audio: false },
+  preview: { suffix: '-preview', width: 720, height: 1280, crf: 32, maxrate: '650k', bufsize: '1300k', duration: 15, audio: false },
   // Version completa del portfolio: se abre al tocar, con audio.
-  full: { suffix: '-full', width: 1080, height: 1920, crf: 26, duration: null, audio: true },
-  // Muestras del comparador LIGHT / OMNI: con audio.
-  sample: { suffix: '', width: 1080, height: 1920, crf: 26, duration: null, audio: true },
+  full: { suffix: '-full', width: 1080, height: 1920, crf: 30, maxrate: '1800k', bufsize: '3600k', duration: null, audio: true },
+  // Muestras LIGHT / OMNI de la seccion de precios: con audio. Son el
+  // argumento de venta: si se ven peor, subirles la calidad aunque pesen mas.
+  sample: { suffix: '', width: 1080, height: 1920, crf: 30, maxrate: '2500k', bufsize: '5000k', duration: null, audio: true },
 }
 
 // Posters: WebP con respaldo JPEG, a la resolucion en la que se muestran.
-const POSTER_WIDTH = { hero: 1080, preview: 720, full: 720, sample: 720 }
+const POSTER_WIDTH = { hero: 720, preview: 720, full: 720, sample: 720 }
 
 const JOBS = [
-  // [PENDIENTE] Falta el original del hero (HERO.mp4).
   { id: 'hero', file: 'HERO.mp4', profiles: ['hero'] },
   { id: 'portfolio-1', file: 'PIXARD.mp4', profiles: ['preview', 'full'] },
   { id: 'portfolio-2', file: 'LIGHT_1.mp4', profiles: ['preview', 'full'] },
@@ -109,6 +114,7 @@ for (const job of JOBS) {
       ...(p.duration ? ['-t', String(p.duration)] : []),
       '-vf', scale(p.width, p.height),
       '-c:v', 'libx264', '-preset', 'slow', '-crf', String(p.crf),
+      '-maxrate', p.maxrate, '-bufsize', p.bufsize,
       '-profile:v', 'high', '-pix_fmt', 'yuv420p',
       ...(p.audio ? ['-c:a', 'aac', '-b:a', '128k', '-ac', '2'] : ['-an']),
       '-movflags', '+faststart',
