@@ -3,6 +3,7 @@ import { heroVideo } from '../data/portfolio.js'
 import { externalLinkProps, useWhatsAppUrl } from '../lib/whatsapp.js'
 import HeroVideo from './HeroVideo.jsx'
 import { ArrowIcon } from './Icons.jsx'
+import CubesBackground from './CubesBackground.jsx'
 
 // Separa el titular para subrayar la parte de hero.titleHighlight ("24 horas").
 // Si el texto resaltado no aparece en el titular, se muestra el titular entero.
@@ -24,7 +25,8 @@ export default function Hero() {
   const ruler = t('hero.ruler')
 
   return (
-    <section className="hero" aria-labelledby="hero-title">
+    <section className="hero has-cubes" aria-labelledby="hero-title">
+      <CubesBackground variant="hero" scale={2.4} scaleMobile={1.6} />
       <div className="container">
         <div className="hero__inner">
           <div className="hero__content">

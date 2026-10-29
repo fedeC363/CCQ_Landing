@@ -270,3 +270,104 @@ textarea {
   cursor: progress;
   opacity: 0.6;
 }
+
+/* Fondo de cubos isometricos (CubesBackground.jsx) ---------------------------
+   Solo en hero, "Que ofrecemos" y cierre. La seccion lleva .has-cubes: queda
+   como referencia del fondo y lo recorta; el contenido va por encima. */
+
+.has-cubes {
+  position: relative;
+  overflow: hidden;
+}
+
+.has-cubes > .container {
+  position: relative;
+  z-index: 1;
+}
+
+.cubes-bg {
+  position: absolute;
+  display: block;
+  pointer-events: none;
+}
+
+.cubes-bg svg {
+  display: block;
+  /* Difuminado fijo: se pinta una vez y no se recalcula al scrollear.
+     No animarlo nunca. */
+  filter: blur(var(--cube-blur));
+}
+
+.cubes-bg__cube {
+  stroke: var(--cube-gap);
+  stroke-linejoin: round;
+}
+
+.cubes-bg__top {
+  fill: var(--cube-top);
+}
+
+.cubes-bg__left {
+  fill: var(--cube-left);
+}
+
+.cubes-bg__right {
+  fill: var(--cube-right);
+}
+
+.cubes-bg__gap {
+  fill: var(--cube-gap);
+}
+
+/* Hero: mitad derecha, detras del video, se apaga hacia el titular */
+.cubes-bg--hero {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 64%;
+  -webkit-mask-image: linear-gradient(to left, #000 25%, transparent 100%);
+  mask-image: linear-gradient(to left, #000 25%, transparent 100%);
+}
+
+/* Que ofrecemos: cubos grandes desde la esquina inferior izquierda, detras de
+   la frase "La IA genera, un editor decide" */
+.cubes-bg--offer {
+  inset: 0;
+  opacity: 0.9;
+  -webkit-mask-image: radial-gradient(circle at 0% 100%, #000 0%, transparent 55%);
+  mask-image: radial-gradient(circle at 0% 100%, #000 0%, transparent 55%);
+}
+
+/* Cierre: el bloque esta centrado, asi que los cubos asoman por los dos
+   costados y el centro queda limpio */
+.cubes-bg--closing {
+  inset: 0;
+  opacity: 0.9;
+  -webkit-mask-image:
+    radial-gradient(ellipse 45% 70% at 100% 50%, #000 0%, transparent 100%),
+    radial-gradient(ellipse 45% 70% at 0% 50%, #000 0%, transparent 100%);
+  mask-image:
+    radial-gradient(ellipse 45% 70% at 100% 50%, #000 0%, transparent 100%),
+    radial-gradient(ellipse 45% 70% at 0% 50%, #000 0%, transparent 100%);
+}
+
+/* Mobile: mas tenue y en menos lugares (mismo corte que el resto: 48rem) */
+@media (max-width: 47.99rem) {
+  .cubes-bg--hero {
+    top: auto;
+    left: 0;
+    width: 100%;
+    height: 70%;
+    opacity: 0.7;
+    -webkit-mask-image: linear-gradient(to top, #000 0%, transparent 100%);
+    mask-image: linear-gradient(to top, #000 0%, transparent 100%);
+  }
+
+  .cubes-bg--offer {
+    display: none;
+  }
+
+  .cubes-bg--closing {
+    opacity: 0.6;
+  }
+}

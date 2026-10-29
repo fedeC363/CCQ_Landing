@@ -4,6 +4,7 @@ import { externalLinkProps, useWhatsAppUrl } from '../lib/whatsapp.js'
 import { useEmail } from '../lib/email.js'
 import SectionMarker from './SectionMarker.jsx'
 import { ChatIcon, CheckIcon, CopyIcon } from './Icons.jsx'
+import CubesBackground from './CubesBackground.jsx'
 
 const COPIED_MS = 2000
 
@@ -57,7 +58,8 @@ export default function Contact() {
   const whatsappUrl = useWhatsAppUrl()
 
   return (
-    <section id="contacto" className="section section--divided" aria-labelledby="contact-title">
+    <section id="contacto" className="section section--divided has-cubes" aria-labelledby="contact-title">
+      <CubesBackground variant="closing" scale={3} scaleMobile={2} />
       <div className="container contact">
         <SectionMarker number="11" />
         <h2 id="contact-title" className="contact__title">

@@ -1,6 +1,7 @@
 import { useLanguage } from '../i18n/useLanguage.js'
 import SectionMarker from './SectionMarker.jsx'
 import { offerIcons } from './Icons.jsx'
+import CubesBackground from './CubesBackground.jsx'
 
 const pad = (n) => String(n).padStart(2, '0')
 
@@ -12,7 +13,8 @@ export default function Offer() {
   const { t } = useLanguage()
 
   return (
-    <section className="section offer" aria-labelledby="offer-title">
+    <section className="section offer has-cubes" aria-labelledby="offer-title">
+      <CubesBackground variant="offer" scale={4} />
       <div className="container offer__inner">
         <div className="offer__intro">
           <SectionMarker number="06" />
