@@ -7,6 +7,10 @@
     <title>{{META:title}}</title>
     <meta name="description" content="{{META:description}}" />
 
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -20,7 +24,14 @@
     <meta property="og:description" content="{{META:ogDescription}}" />
     <meta property="og:locale" content="es_AR" />
     <meta property="og:locale:alternate" content="en_US" />
-    <!-- [PENDIENTE] og:image, og:url y favicon: esperan el logo y el dominio definitivo. -->
+    <!-- og:image y og:url: vite.config.js los arma con site.siteUrl. Con siteUrl
+         vacio, og:image queda relativa y og:url no se escribe. -->
+    <meta property="og:image" content="{{OG_IMAGE}}" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="{{SITE:name}}" />
+    {{OG_URL_TAG}}
+    <meta name="twitter:card" content="summary_large_image" />
   </head>
   <body>
     <div id="root"></div>

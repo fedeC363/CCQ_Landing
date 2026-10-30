@@ -15,7 +15,7 @@ npm run preview   # sirve el build para probarlo
 
 | Qué | Archivo |
 | --- | --- |
-| Nombre de marca, teléfono, mail, eslogan, año, redes | `src/content/site.config.js` |
+| Nombre de marca, logo, teléfono, mail, eslogan, dominio, año, redes | `src/content/site.config.js` |
 | Todos los textos en español | `src/content/es.json` |
 | Todos los textos en inglés | `src/content/en.json` |
 | Videos del hero y del portfolio | `src/data/portfolio.js` |
@@ -104,4 +104,5 @@ Importar el repositorio en Vercel. Detecta Vite solo (build `npm run build`, sal
 
 - Reseñas de clientes (mínimo tres) para publicar la sección 09.
 - Si Mercado Pago cobra en pesos a cotización del día.
-- Logo, favicon, imagen para Open Graph y dominio.
+- Dominio. Cuando exista, completar `siteUrl` en `src/content/site.config.js` (ej. `https://ccqstudio.com`, sin barra final): así `og:image` y `og:url` salen con la dirección completa y la vista previa al compartir el link (WhatsApp, redes) muestra la imagen.
+- Analítica y pixel de Meta (se resuelven junto con el despliegue).

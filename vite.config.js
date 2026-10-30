@@ -18,9 +18,15 @@ function htmlMeta() {
     transformIndexHtml: {
       order: 'pre',
       handler(html) {
+        // Con dominio, direcciones completas (WhatsApp y otros servicios las
+        // necesitan para mostrar la imagen). Sin dominio, ruta relativa y sin og:url.
+        const base = site.siteUrl ? site.siteUrl.replace(/\/+$/, '') : ''
+        const ogUrlTag = base ? `<meta property="og:url" content="${escapeHtml(`${base}/`)}" />` : ''
         return html
           .replace(/\{\{META:(\w+)\}\}/g, (_, key) => escapeHtml(interpolate(es.meta[key], templateVars)))
           .replace(/\{\{SITE:(\w+)\}\}/g, (_, key) => escapeHtml(site[key]))
+          .replace('{{OG_IMAGE}}', escapeHtml(`${base}/og-image.png`))
+          .replace('{{OG_URL_TAG}}', ogUrlTag)
       },
     },
   }

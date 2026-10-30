@@ -96,8 +96,6 @@
   --fs-faq: 1.25rem; /* 20px */
   --fs-lead: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
   --fs-h3: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);
-  --fs-logo: 1.75rem; /* 28px */
-  --fs-logo-footer: 1.5rem; /* 24px */
   --fs-quote: clamp(1.875rem, 1.3rem + 1.8vw, 2.75rem);
   --fs-plan-name: 2.25rem; /* 36px */
   --fs-step-number: 3.5rem; /* 56px */
@@ -167,6 +165,9 @@
   --mobile-button-height: 3.375rem; /* 54 */
   --input-height: 3rem; /* 48 */
   --lang-button-height: 2.25rem; /* 36 */
+  --logo-height: 30px; /* logo en la barra superior */
+  --logo-height-mobile: 24px;
+  --logo-height-footer: 38px;
   --touch-target: 2.75rem; /* 44: area tactil minima de los controles */
   --icon-sm: 1rem;
   --icon-md: 1.125rem;

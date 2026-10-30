@@ -2,6 +2,7 @@ import { useLanguage } from '../i18n/useLanguage.js'
 import { site } from '../content/site.config.js'
 import { externalLinkProps, useWhatsAppUrl } from '../lib/whatsapp.js'
 import { useEmail } from '../lib/email.js'
+import Logo from './Logo.jsx'
 
 export default function Footer() {
   const { t, slogan } = useLanguage()
@@ -12,7 +13,7 @@ export default function Footer() {
     <footer className="site-footer">
       <div className="container site-footer__inner">
         <div className="site-footer__brand">
-          <span className="site-footer__name">{site.name}</span>
+          <Logo className="site-footer__logo" loading="lazy" sizes="100px" />
           <span className="site-footer__slogan">{slogan}</span>
         </div>
 

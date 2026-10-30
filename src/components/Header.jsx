@@ -1,7 +1,7 @@
 import { LANGUAGES, useLanguage } from '../i18n/useLanguage.js'
-import { site } from '../content/site.config.js'
 import { externalLinkProps, useWhatsAppUrl } from '../lib/whatsapp.js'
 import { ChatIcon } from './Icons.jsx'
+import Logo from './Logo.jsx'
 
 export default function Header() {
   const { lang, setLang, t, slogan } = useLanguage()
@@ -10,9 +10,9 @@ export default function Header() {
   return (
     <header className="site-header" id="top">
       <div className="container site-header__inner">
-        {/* [PENDIENTE] Logo: todavia no existe, se usa el nombre escrito. */}
+        {/* Logo (imagen) + eslogan; todo el bloque es el enlace al inicio. */}
         <a className="brand" href="#top" aria-label={t('a11y.home')}>
-          <span className="brand__name">{site.name}</span>
+          <Logo className="brand__logo" loading="eager" sizes="(max-width: 47.99rem) 62px, 82px" />
           <span className="brand__slogan">{slogan}</span>
         </a>
 

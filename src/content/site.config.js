@@ -8,10 +8,19 @@ export const site = {
   // Nombre corto usado en el mensaje precargado de WhatsApp ("Hola CCQ, ...").
   shortName: 'CCQ',
 
-  // Eslogan: va debajo del nombre en la barra superior y en el pie.
+  // Logo (PNG con fondo transparente, en public/). width y height son los del
+  // archivo chico: el navegador los usa para reservar el espacio.
+  logo: {
+    src: '/logo-480.png',
+    srcSet: '/logo-480.png 480w, /logo.png 1200w',
+    width: 480,
+    height: 186,
+  },
+
+  // Eslogan: va debajo del logo en la barra superior y en el pie.
   slogan: {
-    es: 'Si lo podés imaginar, lo podemos producir.',
-    en: 'If you can imagine it, we can produce it.',
+    es: 'Si lo podés imaginar, lo producimos.',
+    en: 'If you can imagine it, we produce it.',
   },
 
   whatsapp: {
@@ -30,6 +39,12 @@ export const site = {
   },
 
   year: 2026,
+
+  // [PENDIENTE] Dominio definitivo. Cuando exista, poner la direccion
+  // completa sin barra final, por ejemplo 'https://ccqstudio.com'.
+  // Con el campo vacio, og:image y og:url quedan como rutas relativas y
+  // la vista previa al compartir puede no mostrar la imagen.
+  siteUrl: '',
 
   // Color de la barra del navegador en mobile. Debe coincidir con --color-bg
   // de tokens.css (aca no se pueden leer variables CSS).
