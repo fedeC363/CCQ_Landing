@@ -13,7 +13,7 @@ export default function Footer() {
     <footer className="site-footer">
       <div className="container site-footer__inner">
         <div className="site-footer__brand">
-          <Logo className="site-footer__logo" loading="lazy" sizes="100px" />
+          <Logo className="site-footer__logo" loading="lazy" />
           <span className="site-footer__slogan">{slogan}</span>
         </div>
 

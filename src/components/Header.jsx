@@ -12,7 +12,7 @@ export default function Header() {
       <div className="container site-header__inner">
         {/* Logo (imagen) + eslogan; todo el bloque es el enlace al inicio. */}
         <a className="brand" href="#top" aria-label={t('a11y.home')}>
-          <Logo className="brand__logo" loading="eager" sizes="(max-width: 47.99rem) 62px, 82px" />
+          <Logo className="brand__logo" loading="eager" />
           <span className="brand__slogan">{slogan}</span>
         </a>
 

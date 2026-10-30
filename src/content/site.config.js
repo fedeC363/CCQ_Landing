@@ -8,13 +8,12 @@ export const site = {
   // Nombre corto usado en el mensaje precargado de WhatsApp ("Hola CCQ, ...").
   shortName: 'CCQ',
 
-  // Logo (PNG con fondo transparente, en public/). width y height son los del
-  // archivo chico: el navegador los usa para reservar el espacio.
+  // Logo (SVG sin fondo, en public/). width y height son las proporciones del
+  // dibujo: el navegador las usa para reservar el espacio.
   logo: {
-    src: '/logo-480.png',
-    srcSet: '/logo-480.png 480w, /logo.png 1200w',
-    width: 480,
-    height: 186,
+    src: '/logo.svg',
+    width: 325,
+    height: 101,
   },
 
   // Eslogan: va debajo del logo en la barra superior y en el pie.
