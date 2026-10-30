@@ -10,8 +10,8 @@ export const site = {
 
   // Eslogan: va debajo del nombre en la barra superior y en el pie.
   slogan: {
-    es: 'Si lo podés imaginar, lo producimos.',
-    en: 'If you can imagine it, we produce it.',
+    es: 'Si lo podés imaginar, lo podemos producir.',
+    en: 'If you can imagine it, we can produce it.',
   },
 
   whatsapp: {
